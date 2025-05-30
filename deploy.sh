@@ -8,8 +8,8 @@ echo "🚀 Starting Cash Flow Analysis Tool Deployment..."
 # Configuration
 PROJECT_NAME="cashflow-analysis-tool"
 REMOTE_HOST="your-domain.com"
-REMOTE_USER="your-cpanel-username"
-REMOTE_PATH="/home/$REMOTE_USER/public_html/cashflow-tool"
+REMOTE_USER="og0lu4axr6ll"
+REMOTE_PATH="/home/og0lu4axr6ll/public_html/scn/091525"
 LOCAL_PATH="."
 
 # Colors for output
@@ -102,7 +102,7 @@ build_project() {
 User-agent: *
 Allow: /
 
-Sitemap: https://$REMOTE_HOST/cashflow-tool/sitemap.xml
+Sitemap: https://$REMOTE_HOST/scn/091525/sitemap.xml
 EOF
     
     # Create sitemap.xml
@@ -110,7 +110,7 @@ EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://$REMOTE_HOST/cashflow-tool/</loc>
+    <loc>https://$REMOTE_HOST/scn/091525/</loc>
     <lastmod>$(date +%Y-%m-%d)</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -202,11 +202,11 @@ set_permissions() {
     print_status "Setting file permissions..."
     
     # This would typically be run on the server
-    cat > set_permissions.sh << 'EOF'
+            cat > set_permissions.sh << 'EOF'
 #!/bin/bash
-find /home/$(whoami)/public_html/cashflow-tool -type f -exec chmod 644 {} \;
-find /home/$(whoami)/public_html/cashflow-tool -type d -exec chmod 755 {} \;
-chmod 644 /home/$(whoami)/public_html/cashflow-tool/.htaccess
+find /home/og0lu4axr6ll/public_html/scn/091525 -type f -exec chmod 644 {} \;
+find /home/og0lu4axr6ll/public_html/scn/091525 -type d -exec chmod 755 {} \;
+chmod 644 /home/og0lu4axr6ll/public_html/scn/091525/.htaccess
 EOF
     
     chmod +x set_permissions.sh
@@ -221,7 +221,7 @@ performance_test() {
     
     if command -v curl &> /dev/null; then
         # Test if site is accessible
-        HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://$REMOTE_HOST/cashflow-tool/")
+        HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://$REMOTE_HOST/scn/091525/")
         
         if [ "$HTTP_CODE" = "200" ]; then
             print_success "Site is accessible (HTTP $HTTP_CODE)"
@@ -230,7 +230,7 @@ performance_test() {
         fi
         
         # Test loading time
-        LOAD_TIME=$(curl -s -o /dev/null -w "%{time_total}" "https://$REMOTE_HOST/cashflow-tool/")
+        LOAD_TIME=$(curl -s -o /dev/null -w "%{time_total}" "https://$REMOTE_HOST/scn/091525/")
         print_status "Page load time: ${LOAD_TIME}s"
         
     else
@@ -311,7 +311,7 @@ main() {
     print_success "Deployment process completed!"
     echo
     echo "Next steps:"
-    echo "1. Verify site is working: https://$REMOTE_HOST/cashflow-tool/"
+    echo "1. Verify site is working: https://$REMOTE_HOST/scn/091525/"
     echo "2. Test all functionality"
     echo "3. Check mobile responsiveness"
     echo "4. Review browser console for errors"
