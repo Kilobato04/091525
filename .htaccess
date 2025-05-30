@@ -93,9 +93,9 @@ RewriteEngine On
 </IfModule>
 
 # ===== ERROR PAGES =====
-ErrorDocument 404 /index.html
-ErrorDocument 403 /index.html
-ErrorDocument 500 /index.html
+ErrorDocument 404 /scn/091525/index.html
+ErrorDocument 403 /scn/091525/index.html
+ErrorDocument 500 /scn/091525/index.html
 
 # ===== DIRECTORY BROWSING =====
 Options -Indexes
