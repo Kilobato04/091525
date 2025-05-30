@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page - Cash Flow Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .test-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .success { color: #00ff88; font-size: 1.2em; }
+        .button {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        .button:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="test-box">
+        <h1>🚀 Deployment Test Page</h1>
+        <p class="success">✅ If you can see this styled page, the deployment is working!</p>
+        
+        <h3>File Structure Test:</h3>
+        <p>
+            <a href="assets/css/styles.css" class="button" target="_blank">Test CSS File</a>
+            <a href="assets/js/main.js" class="button" target="_blank">Test JS File</a>
+            <a href="index.html" class="button">Main Application</a>
+            <a href="diagnostic.html" class="button">Diagnostic Page</a>
+        </p>
+        
+        <div class="test-box">
+            <h3>Expected File Structure:</h3>
+            <div style="text-align: left; font-family: monospace; font-size: 0.9em;">
+                📁 /scn/091525/<br>
+                ├── 📄 index.html<br>
+                ├── 📄 test.html (this page)<br>
+                ├── 📄 diagnostic.html<br>
+                ├── 📁 assets/<br>
+                │&nbsp;&nbsp;&nbsp;├── 📁 css/<br>
+                │&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;└── 📄 styles.css<br>
+                │&nbsp;&nbsp;&nbsp;└── 📁 js/<br>
+                │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── 📄 main.js<br>
+                ├── 📄 .htaccess<br>
+                ├── 📄 robots.txt<br>
+                └── 📄 sitemap.xml
+            </div>
+        </div>
+        
+        <p><strong>Current Time:</strong> <span id="current-time"></span></p>
+        <p><strong>Current URL:</strong> <span id="current-url"></span></p>
+    </div>
+    
+    <script>
+        document.getElementById('current-time').textContent = new Date().toLocaleString();
+        document.getElementById('current-url').textContent = window.location.href;
+        
+        console.log('✅ Test page loaded successfully');
+        console.log('Current location:', window.location);
+        console.log('Expected CSS path:', window.location.origin + window.location.pathname.replace('test.html', '') + 'assets/css/styles.css');
+    </script>
+</body>
+</html>
