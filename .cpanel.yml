@@ -89,11 +89,17 @@ deployment:
       # Default document
       DirectoryIndex index.html
       
-      # Force correct MIME types
+      # Force correct MIME types and encoding
       <IfModule mod_mime.c>
           AddType text/css .css
           AddType application/javascript .js
+          AddCharset UTF-8 .html
+          AddCharset UTF-8 .css
+          AddCharset UTF-8 .js
       </IfModule>
+      
+      # Force UTF-8 encoding
+      AddDefaultCharset UTF-8
       EOF
     
     # Set .htaccess permissions
