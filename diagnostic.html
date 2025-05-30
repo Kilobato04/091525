@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Diagnostic Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .test-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .success { color: #00ff00; }
+        .error { color: #ff0000; }
+        .warning { color: #ffaa00; }
+    </style>
+</head>
+<body>
+    <h1>🔍 CSS Diagnostic Test Page</h1>
+    
+    <div class="test-container">
+        <h2>Inline CSS Test</h2>
+        <p class="success">✅ If you see this styled (green text with background), inline CSS is working.</p>
+    </div>
+    
+    <div class="test-container">
+        <h2>External CSS Test</h2>
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <p>If the page below has proper styling (gradients, colors, etc.), external CSS is loading:</p>
+        
+        <div class="container" style="max-width: 800px;">
+            <div class="nav-tabs">
+                <button class="nav-tab active">Test Tab</button>
+            </div>
+            <div class="scenario-panel scenario-1" style="margin: 20px 0;">
+                <div class="scenario-title">Test Scenario</div>
+                <p>This should have orange styling if CSS loads properly.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-container">
+        <h2>File Path Tests</h2>
+        <p>Testing file accessibility:</p>
+        <ul>
+            <li><a href="assets/css/styles.css" target="_blank">Direct CSS Link Test</a> - Should show CSS code</li>
+            <li><a href="assets/js/main.js" target="_blank">Direct JS Link Test</a> - Should show JavaScript code</li>
+            <li><a href="index.html">Main App Link</a> - Should load the cash flow tool</li>
+        </ul>
+    </div>
+    
+    <div class="test-container">
+        <h2>Debug Information</h2>
+        <p>Current URL: <span id="current-url"></span></p>
+        <p>Expected CSS Path: <span id="css-path"></span></p>
+        <p>Expected JS Path: <span id="js-path"></span></p>
+    </div>
+    
+    <script>
+        document.getElementById('current-url').textContent = window.location.href;
+        document.getElementById('css-path').textContent = window.location.origin + window.location.pathname.replace('diagnostic.html', '') + 'assets/css/styles.css';
+        document.getElementById('js-path').textContent = window.location.origin + window.location.pathname.replace('diagnostic.html', '') + 'assets/js/main.js';
+        
+        // Test CSS loading
+        fetch('assets/css/styles.css')
+            .then(response => {
+                if (response.ok) {
+                    console.log('✅ CSS file accessible');
+                    document.body.innerHTML += '<div class="test-container"><p class="success">✅ CSS file is accessible via fetch</p></div>';
+                } else {
+                    console.log('❌ CSS file not accessible:', response.status);
+                    document.body.innerHTML += '<div class="test-container"><p class="error">❌ CSS file not accessible: ' + response.status + '</p></div>';
+                }
+            })
+            .catch(error => {
+                console.log('❌ CSS fetch error:', error);
+                document.body.innerHTML += '<div class="test-container"><p class="error">❌ CSS fetch error: ' + error.message + '</p></div>';
+            });
+    </script>
+</body>
+</html>
