@@ -1,0 +1,107 @@
+---
+deployment:
+  tasks:
+    # Clean up previous deployment
+    - export DEPLOYPATH=/home/og0lu4axr6ll/public_html/scn/091525
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/rm -rf $DEPLOYPATH/*
+    
+    # Copy main files
+    - /bin/cp index.html $DEPLOYPATH/
+    - /bin/cp README.md $DEPLOYPATH/
+    
+    # Create assets directory structure
+    - /bin/mkdir -p $DEPLOYPATH/assets/css
+    - /bin/mkdir -p $DEPLOYPATH/assets/js
+    - /bin/mkdir -p $DEPLOYPATH/assets/images
+    
+    # Copy CSS files
+    - /bin/cp assets/css/styles.css $DEPLOYPATH/assets/css/
+    
+    # Copy JavaScript files
+    - /bin/cp assets/js/main.js $DEPLOYPATH/assets/js/
+    
+    # Set proper permissions
+    - /bin/chmod 644 $DEPLOYPATH/index.html
+    - /bin/chmod 644 $DEPLOYPATH/README.md
+    - /bin/chmod 644 $DEPLOYPATH/assets/css/styles.css
+    - /bin/chmod 644 $DEPLOYPATH/assets/js/main.js
+    - /bin/chmod 755 $DEPLOYPATH/assets
+    - /bin/chmod 755 $DEPLOYPATH/assets/css
+    - /bin/chmod 755 $DEPLOYPATH/assets/js
+    - /bin/chmod 755 $DEPLOYPATH/assets/images
+    
+    # Create .htaccess for better performance and security
+    - /bin/cat > $DEPLOYPATH/.htaccess << 'EOF'
+      # Enable compression
+      <IfModule mod_deflate.c>
+          AddOutputFilterByType DEFLATE text/plain
+          AddOutputFilterByType DEFLATE text/html
+          AddOutputFilterByType DEFLATE text/xml
+          AddOutputFilterByType DEFLATE text/css
+          AddOutputFilterByType DEFLATE application/xml
+          AddOutputFilterByType DEFLATE application/xhtml+xml
+          AddOutputFilterByType DEFLATE application/rss+xml
+          AddOutputFilterByType DEFLATE application/javascript
+          AddOutputFilterByType DEFLATE application/x-javascript
+      </IfModule>
+
+      # Set cache headers
+      <IfModule mod_expires.c>
+          ExpiresActive on
+          ExpiresByType text/css "access plus 1 year"
+          ExpiresByType application/javascript "access plus 1 year"
+          ExpiresByType image/png "access plus 1 year"
+          ExpiresByType image/jpg "access plus 1 year"
+          ExpiresByType image/jpeg "access plus 1 year"
+          ExpiresByType image/gif "access plus 1 year"
+          ExpiresByType image/svg+xml "access plus 1 year"
+      </IfModule>
+
+      # Security headers
+      Header always set X-Content-Type-Options nosniff
+      Header always set X-Frame-Options SAMEORIGIN
+      Header always set X-XSS-Protection "1; mode=block"
+      Header always set Referrer-Policy "strict-origin-when-cross-origin"
+      
+      # Error pages
+      ErrorDocument 404 /scn/091525/index.html
+      
+      # Directory browsing
+      Options -Indexes
+      
+      # Default document
+      DirectoryIndex index.html
+      EOF
+    
+    # Set .htaccess permissions
+    - /bin/chmod 644 $DEPLOYPATH/.htaccess
+    
+    # Create robots.txt
+    - /bin/cat > $DEPLOYPATH/robots.txt << 'EOF'
+      User-agent: *
+      Allow: /
+      
+      Sitemap: https://yourdomain.com/scn/091525/sitemap.xml
+      EOF
+    
+    # Create basic sitemap.xml
+    - /bin/cat > $DEPLOYPATH/sitemap.xml << 'EOF'
+      <?xml version="1.0" encoding="UTF-8"?>
+      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        <url>
+          <loc>https://yourdomain.com/scn/091525/</loc>
+          <lastmod>2025-05-30</lastmod>
+          <changefreq>weekly</changefreq>
+          <priority>1.0</priority>
+        </url>
+      </urlset>
+      EOF
+    
+    # Set final permissions for SEO files
+    - /bin/chmod 644 $DEPLOYPATH/robots.txt
+    - /bin/chmod 644 $DEPLOYPATH/sitemap.xml
+    
+    # Create deployment log
+    - /bin/echo "Cash Flow Analysis Tool deployed successfully on $(date)" > $DEPLOYPATH/deploy.log
+    - /bin/chmod 644 $DEPLOYPATH/deploy.log
