@@ -207,14 +207,17 @@ function initializeCharts() {
         });
         charts = {};
 
-        // Initialize waterfall charts
-        createWaterfallChart1_2025();
-        createWaterfallChart2_2025();
-        createWaterfallChart1_2026();
-        createWaterfallChart2_2026();
-        createComparisonChart();
-        
-        console.log('Charts initialized successfully');
+        // Wait for DOM to be ready
+        setTimeout(() => {
+            // Initialize waterfall charts
+            createWaterfallChart1_2025();
+            createWaterfallChart2_2025();
+            createWaterfallChart1_2026();
+            createWaterfallChart2_2026();
+            createComparisonChart();
+            
+            console.log('Charts initialized successfully');
+        }, 100);
         
     } catch (error) {
         console.error('Error initializing charts:', error);
@@ -288,6 +291,38 @@ function createWaterfallChart1_2025() {
             animation: {
                 duration: 1000,
                 easing: 'easeInOutQuart'
+            },
+            layout: {
+                padding: {
+                    left: 10,
+                    right: 10,
+                    top: 10,
+                    bottom: 10
+                }
+            },
+            layout: {
+                padding: {
+                    left: 10,
+                    right: 10,
+                    top: 10,
+                    bottom: 10
+                }
+            },
+            layout: {
+                padding: {
+                    left: 10,
+                    right: 10,
+                    top: 10,
+                    bottom: 10
+                }
+            },
+            layout: {
+                padding: {
+                    left: 10,
+                    right: 10,
+                    top: 10,
+                    bottom: 10
+                }
             }
         }
     });
@@ -627,6 +662,14 @@ function createComparisonChart() {
             animation: {
                 duration: 1500,
                 easing: 'easeInOutQuart'
+            },
+            layout: {
+                padding: {
+                    left: 10,
+                    right: 10,
+                    top: 10,
+                    bottom: 10
+                }
             }
         }
     });
