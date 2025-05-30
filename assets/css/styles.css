@@ -1,0 +1,658 @@
+/* ===== RESET & BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    min-height: 100vh;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+    max-width: 1900px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: 700;
+}
+
+h3 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+h4 {
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+/* ===== NAVIGATION TABS ===== */
+.nav-tabs {
+    display: flex;
+    background: #34495e;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-tab {
+    flex: 1;
+    padding: 15px;
+    text-align: center;
+    background: #34495e;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    outline: none;
+}
+
+.nav-tab:hover {
+    background: #3d566e;
+    transform: translateY(-2px);
+}
+
+.nav-tab.active {
+    background: #2c3e50;
+    color: #f39c12;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== TAB CONTENT ===== */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== LAYOUT GRIDS ===== */
+.scenarios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 20px 0;
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin: 20px 0;
+}
+
+/* ===== SCENARIO PANELS ===== */
+.scenario-panel {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 3px solid;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scenario-panel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.scenario-1 { 
+    border-color: #e67e22; 
+}
+
+.scenario-2 { 
+    border-color: #27ae60; 
+}
+
+.scenario-title {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.scenario-1 .scenario-title { 
+    background: linear-gradient(135deg, #e67e22, #d35400); 
+}
+
+.scenario-2 .scenario-title { 
+    background: linear-gradient(135deg, #27ae60, #2ecc71); 
+}
+
+/* ===== YEAR SECTIONS ===== */
+.year-section {
+    margin: 20px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.year-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+    background: #6c757d;
+    padding: 10px;
+    border-radius: 8px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== TABLES ===== */
+.monthly-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.75em;
+    margin: 15px 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.monthly-table th,
+.monthly-table td {
+    border: 1px solid #ddd;
+    padding: 8px 4px;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+.monthly-table th {
+    background: #34495e;
+    color: white;
+    font-weight: bold;
+    font-size: 0.7em;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.monthly-table th.concept-header {
+    background: #2c3e50;
+    width: 120px;
+    text-align: left;
+    padding-left: 8px;
+    font-size: 0.75em;
+}
+
+.monthly-table tbody tr:hover {
+    background-color: rgba(52, 73, 94, 0.05);
+}
+
+/* ===== TABLE ROW STYLES ===== */
+.income-row { 
+    background: #d4edda; 
+}
+
+.expense-row { 
+    background: #f8d7da; 
+}
+
+.total-row { 
+    background: #fff3cd; 
+    font-weight: bold; 
+}
+
+.net-flow-row { 
+    background: #e3f2fd; 
+    font-weight: bold; 
+}
+
+/* ===== VALUE STYLING ===== */
+.positive { 
+    color: #28a745; 
+    font-weight: bold; 
+}
+
+.negative { 
+    color: #dc3545; 
+    font-weight: bold; 
+}
+
+.neutral { 
+    color: #6c757d; 
+}
+
+/* ===== EDITABLE FIELDS ===== */
+.editable {
+    background: #fff9e6 !important;
+    border: 2px solid #ffc107 !important;
+    cursor: text;
+    position: relative;
+}
+
+.editable:hover {
+    background: #fffaed !important;
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.3);
+}
+
+.editable input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: #e67e22;
+    outline: none;
+    padding: 4px;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.editable input:focus {
+    background: rgba(255, 193, 7, 0.1);
+    border-radius: 3px;
+}
+
+.edit-indicator {
+    font-size: 0.7em;
+    color: #e67e22;
+    font-style: italic;
+    margin-top: 5px;
+    text-align: center;
+    padding: 5px;
+    background: rgba(255, 193, 7, 0.1);
+    border-radius: 5px;
+}
+
+/* ===== CHART CONTAINERS ===== */
+.chart-container {
+    margin: 30px 0;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.chart-container:hover {
+    transform: translateY(-3px);
+}
+
+.chart-title {
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ecf0f1;
+}
+
+/* ===== SUMMARY SECTIONS ===== */
+.executive-summary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin: 30px 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.summary-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    border-left: 4px solid white;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease;
+}
+
+.summary-card:hover {
+    transform: translateX(5px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.summary-card ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.summary-card li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+/* ===== COMPARISON TABLE ===== */
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.comparison-table th {
+    background: #34495e;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.comparison-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s ease;
+}
+
+.comparison-table tbody tr:hover {
+    background-color: rgba(52, 73, 94, 0.05);
+}
+
+.comparison-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* ===== RECOMMENDATIONS ===== */
+.recommendations {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin: 30px 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.recommendation-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    border-left: 4px solid white;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.recommendation-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(5px);
+}
+
+.recommendation-item ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.recommendation-item li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+/* ===== FINAL RECOMMENDATION ===== */
+.final-recommendation {
+    background: #fff3cd;
+    border: 2px solid #ffc107;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 30px 0;
+    color: #856404;
+    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.2);
+}
+
+.final-recommendation h3 {
+    color: #856404;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.final-recommendation ul {
+    margin-left: 20px;
+}
+
+.final-recommendation li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1200px) {
+    .scenarios-grid,
+    .charts-grid,
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .container {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .monthly-table {
+        font-size: 0.65em;
+    }
+    
+    .nav-tab {
+        padding: 12px 8px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 15px;
+        border-radius: 10px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+    
+    .nav-tabs {
+        flex-direction: column;
+    }
+    
+    .nav-tab {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+    
+    .monthly-table {
+        font-size: 0.6em;
+    }
+    
+    .monthly-table th,
+    .monthly-table td {
+        padding: 4px 2px;
+    }
+    
+    .scenario-panel {
+        padding: 15px;
+    }
+    
+    .year-section {
+        padding: 15px;
+    }
+    
+    .chart-container {
+        padding: 15px;
+    }
+    
+    .executive-summary,
+    .recommendations {
+        padding: 20px;
+    }
+    
+    .summary-grid {
+        gap: 15px;
+    }
+    
+    .final-recommendation {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .monthly-table {
+        font-size: 0.5em;
+    }
+    
+    .monthly-table th.concept-header {
+        width: 80px;
+        font-size: 0.6em;
+    }
+    
+    .scenario-title {
+        font-size: 1.1em;
+        padding: 10px;
+    }
+    
+    .year-title {
+        font-size: 1em;
+        padding: 8px;
+    }
+    
+    .chart-title {
+        font-size: 1.1em;
+    }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    body {
+        background: white;
+        color: black;
+        padding: 0;
+    }
+    
+    .container {
+        background: white;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 20px;
+    }
+    
+    .nav-tabs {
+        display: none;
+    }
+    
+    .tab-content {
+        display: block !important;
+    }
+    
+    .chart-container {
+        page-break-inside: avoid;
+    }
+    
+    .scenario-panel {
+        page-break-inside: avoid;
+        margin-bottom: 20px;
+    }
+}
+
+/* ===== ACCESSIBILITY ===== */
+.nav-tab:focus,
+.editable input:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* ===== LOADING ANIMATIONS ===== */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* ===== UTILITY CLASSES ===== */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-10 { margin-bottom: 10px; }
+.mb-20 { margin-bottom: 20px; }
+.mb-30 { margin-bottom: 30px; }
+
+.mt-10 { margin-top: 10px; }
+.mt-20 { margin-top: 20px; }
+.mt-30 { margin-top: 30px; }
+
+.p-10 { padding: 10px; }
+.p-20 { padding: 20px; }
+.p-30 { padding: 30px; }
+
+.bold { font-weight: bold; }
+.italic { font-style: italic; }
+
+.hide { display: none; }
+.show { display: block; }
