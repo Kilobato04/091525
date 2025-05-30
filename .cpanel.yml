@@ -6,30 +6,44 @@ deployment:
     - /bin/mkdir -p $DEPLOYPATH
     - /bin/rm -rf $DEPLOYPATH/*
     
-    # Copy main files
-    - /bin/cp index.html $DEPLOYPATH/
-    - /bin/cp README.md $DEPLOYPATH/
-    
-    # Create assets directory structure
+    # Create assets directory structure first
+    - /bin/mkdir -p $DEPLOYPATH/assets
     - /bin/mkdir -p $DEPLOYPATH/assets/css
     - /bin/mkdir -p $DEPLOYPATH/assets/js
     - /bin/mkdir -p $DEPLOYPATH/assets/images
     
-    # Copy CSS files
+    # Copy main files
+    - /bin/cp index.html $DEPLOYPATH/
+    - /bin/cp test.html $DEPLOYPATH/ 2>/dev/null || echo "test.html not found, skipping"
+    - /bin/cp diagnostic.html $DEPLOYPATH/ 2>/dev/null || echo "diagnostic.html not found, skipping"
+    - /bin/cp README.md $DEPLOYPATH/ 2>/dev/null || echo "README.md not found, skipping"
+    
+    # Copy CSS files with verification
     - /bin/cp assets/css/styles.css $DEPLOYPATH/assets/css/
+    - /bin/ls -la $DEPLOYPATH/assets/css/
     
-    # Copy JavaScript files
+    # Copy JavaScript files with verification
     - /bin/cp assets/js/main.js $DEPLOYPATH/assets/js/
+    - /bin/ls -la $DEPLOYPATH/assets/js/
     
-    # Set proper permissions
-    - /bin/chmod 644 $DEPLOYPATH/index.html
-    - /bin/chmod 644 $DEPLOYPATH/README.md
-    - /bin/chmod 644 $DEPLOYPATH/assets/css/styles.css
-    - /bin/chmod 644 $DEPLOYPATH/assets/js/main.js
+    # Set proper permissions for directories first
+    - /bin/chmod 755 $DEPLOYPATH
     - /bin/chmod 755 $DEPLOYPATH/assets
     - /bin/chmod 755 $DEPLOYPATH/assets/css
     - /bin/chmod 755 $DEPLOYPATH/assets/js
     - /bin/chmod 755 $DEPLOYPATH/assets/images
+    
+    # Set proper permissions for files
+    - /bin/chmod 644 $DEPLOYPATH/index.html
+    - /bin/chmod 644 $DEPLOYPATH/assets/css/styles.css
+    - /bin/chmod 644 $DEPLOYPATH/assets/js/main.js
+    
+    # Verify file existence and permissions
+    - /bin/echo "Checking deployed files:"
+    - /bin/ls -la $DEPLOYPATH/
+    - /bin/ls -la $DEPLOYPATH/assets/
+    - /bin/ls -la $DEPLOYPATH/assets/css/
+    - /bin/ls -la $DEPLOYPATH/assets/js/
     
     # Create .htaccess for better performance and security
     - /bin/cat > $DEPLOYPATH/.htaccess << 'EOF'
@@ -59,10 +73,12 @@ deployment:
       </IfModule>
 
       # Security headers
-      Header always set X-Content-Type-Options nosniff
-      Header always set X-Frame-Options SAMEORIGIN
-      Header always set X-XSS-Protection "1; mode=block"
-      Header always set Referrer-Policy "strict-origin-when-cross-origin"
+      <IfModule mod_headers.c>
+          Header always set X-Content-Type-Options nosniff
+          Header always set X-Frame-Options SAMEORIGIN
+          Header always set X-XSS-Protection "1; mode=block"
+          Header always set Referrer-Policy "strict-origin-when-cross-origin"
+      </IfModule>
       
       # Error pages
       ErrorDocument 404 /scn/091525/index.html
@@ -72,6 +88,12 @@ deployment:
       
       # Default document
       DirectoryIndex index.html
+      
+      # Force correct MIME types
+      <IfModule mod_mime.c>
+          AddType text/css .css
+          AddType application/javascript .js
+      </IfModule>
       EOF
     
     # Set .htaccess permissions
@@ -82,7 +104,7 @@ deployment:
       User-agent: *
       Allow: /
       
-      Sitemap: https://yourdomain.com/scn/091525/sitemap.xml
+      Sitemap: https://smability.io/scn/091525/sitemap.xml
       EOF
     
     # Create basic sitemap.xml
@@ -90,7 +112,7 @@ deployment:
       <?xml version="1.0" encoding="UTF-8"?>
       <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         <url>
-          <loc>https://yourdomain.com/scn/091525/</loc>
+          <loc>https://smability.io/scn/091525/</loc>
           <lastmod>2025-05-30</lastmod>
           <changefreq>weekly</changefreq>
           <priority>1.0</priority>
@@ -102,6 +124,16 @@ deployment:
     - /bin/chmod 644 $DEPLOYPATH/robots.txt
     - /bin/chmod 644 $DEPLOYPATH/sitemap.xml
     
-    # Create deployment log
+    # Create deployment log with file verification
     - /bin/echo "Cash Flow Analysis Tool deployed successfully on $(date)" > $DEPLOYPATH/deploy.log
+    - /bin/echo "Files deployed:" >> $DEPLOYPATH/deploy.log
+    - /bin/ls -la $DEPLOYPATH/ >> $DEPLOYPATH/deploy.log
+    - /bin/echo "CSS directory:" >> $DEPLOYPATH/deploy.log
+    - /bin/ls -la $DEPLOYPATH/assets/css/ >> $DEPLOYPATH/deploy.log
+    - /bin/echo "JS directory:" >> $DEPLOYPATH/deploy.log
+    - /bin/ls -la $DEPLOYPATH/assets/js/ >> $DEPLOYPATH/deploy.log
     - /bin/chmod 644 $DEPLOYPATH/deploy.log
+    
+    # Test CSS file accessibility
+    - /bin/echo "Testing CSS file..." >> $DEPLOYPATH/deploy.log
+    - /bin/head -5 $DEPLOYPATH/assets/css/styles.css >> $DEPLOYPATH/deploy.log 2>&1 || echo "CSS file read error" >> $DEPLOYPATH/deploy.log
