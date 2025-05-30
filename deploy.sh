@@ -7,7 +7,7 @@ echo "🚀 Starting Cash Flow Analysis Tool Deployment..."
 
 # Configuration
 PROJECT_NAME="cashflow-analysis-tool"
-REMOTE_HOST="your-domain.com"
+REMOTE_HOST="smability.io"
 REMOTE_USER="og0lu4axr6ll"
 REMOTE_PATH="/home/og0lu4axr6ll/public_html/scn/091525"
 LOCAL_PATH="."
@@ -93,6 +93,7 @@ build_project() {
     
     # Copy files
     cp index.html $BUILD_DIR/
+    cp diagnostic.html $BUILD_DIR/ 2>/dev/null || echo "diagnostic.html not found, skipping"
     cp assets/css/styles.css $BUILD_DIR/assets/css/
     cp assets/js/main.js $BUILD_DIR/assets/js/
     cp .htaccess $BUILD_DIR/ 2>/dev/null || true
@@ -102,7 +103,7 @@ build_project() {
 User-agent: *
 Allow: /
 
-Sitemap: https://$REMOTE_HOST/scn/091525/sitemap.xml
+Sitemap: https://smability.io/scn/091525/sitemap.xml
 EOF
     
     # Create sitemap.xml
@@ -110,7 +111,7 @@ EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://$REMOTE_HOST/scn/091525/</loc>
+    <loc>https://smability.io/scn/091525/</loc>
     <lastmod>$(date +%Y-%m-%d)</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -221,7 +222,7 @@ performance_test() {
     
     if command -v curl &> /dev/null; then
         # Test if site is accessible
-        HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://$REMOTE_HOST/scn/091525/")
+        HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://smability.io/scn/091525/")
         
         if [ "$HTTP_CODE" = "200" ]; then
             print_success "Site is accessible (HTTP $HTTP_CODE)"
@@ -229,8 +230,16 @@ performance_test() {
             print_warning "Site returned HTTP $HTTP_CODE"
         fi
         
+        # Test CSS file accessibility
+        CSS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://smability.io/scn/091525/assets/css/styles.css")
+        if [ "$CSS_CODE" = "200" ]; then
+            print_success "CSS file is accessible (HTTP $CSS_CODE)"
+        else
+            print_error "CSS file not accessible (HTTP $CSS_CODE)"
+        fi
+        
         # Test loading time
-        LOAD_TIME=$(curl -s -o /dev/null -w "%{time_total}" "https://$REMOTE_HOST/scn/091525/")
+        LOAD_TIME=$(curl -s -o /dev/null -w "%{time_total}" "https://smability.io/scn/091525/")
         print_status "Page load time: ${LOAD_TIME}s"
         
     else
@@ -311,10 +320,12 @@ main() {
     print_success "Deployment process completed!"
     echo
     echo "Next steps:"
-    echo "1. Verify site is working: https://$REMOTE_HOST/scn/091525/"
-    echo "2. Test all functionality"
-    echo "3. Check mobile responsiveness"
-    echo "4. Review browser console for errors"
+    echo "1. Verify site is working: https://smability.io/scn/091525/"
+    echo "2. Test CSS loading: https://smability.io/scn/091525/diagnostic.html"
+    echo "3. Check assets directly: https://smability.io/scn/091525/assets/css/styles.css"
+    echo "4. Test all functionality"
+    echo "5. Check mobile responsiveness"
+    echo "6. Review browser console for errors"
     echo
     echo "Support: https://github.com/yourusername/$PROJECT_NAME/issues"
 }
