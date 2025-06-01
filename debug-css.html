@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico CSS Avanzado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .success { color: #28a745; font-weight: bold; }
+        .error { color: #dc3545; font-weight: bold; }
+        .warning { color: #ffc107; font-weight: bold; }
+        .code-block {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+            margin: 10px 0;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+        #css-test {
+            display: none;
+        }
+    </style>
+    
+    <!-- Intentar cargar el CSS externo -->
+    <link rel="stylesheet" href="assets/css/styles.css" id="external-css">
+</head>
+<body>
+    <h1>🔍 Diagnóstico Avanzado de CSS</h1>
+    
+    <div class="test-section">
+        <h2>1. Prueba de CSS Inline</h2>
+        <p class="success">✅ Si ves este texto en verde con estilo, el CSS inline funciona.</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>2. Prueba de Carga de CSS Externo</h2>
+        <div id="css-load-status">⏳ Verificando...</div>
+        <div id="css-path-info"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>3. Prueba de Aplicación de Estilos</h2>
+        <!-- Estos elementos deberían ser estilizados por el CSS externo -->
+        <div class="container" style="max-width: 600px;">
+            <div class="nav-tabs">
+                <button class="nav-tab active">Prueba Tab</button>
+            </div>
+            <div class="scenario-panel scenario-1" style="margin: 20px 0;">
+                <div class="scenario-title">Prueba de Estilo</div>
+                <p>Si este panel tiene colores naranja/dorado, el CSS externo está funcionando.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>4. Información del Navegador</h2>
+        <div id="browser-info"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>5. Prueba de Red</h2>
+        <div id="network-test">⏳ Probando acceso a archivos...</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>6. URLs Calculadas</h2>
+        <div id="url-info"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>7. Soluciones Sugeridas</h2>
+        <div id="solutions"></div>
+    </div>
+
+    <script>
+        console.log('🔍 Iniciando diagnóstico avanzado...');
+        
+        // Información del navegador
+        document.getElementById('browser-info').innerHTML = `
+            <div class="code-block">
+                <strong>User Agent:</strong> ${navigator.userAgent}<br>
+                <strong>Idioma:</strong> ${navigator.language}<br>
+                <strong>Plataforma:</strong> ${navigator.platform}<br>
+                <strong>URL Actual:</strong> ${window.location.href}<br>
+                <strong>Protocolo:</strong> ${window.location.protocol}<br>
+                <strong>Host:</strong> ${window.location.host}<br>
+                <strong>Pathname:</strong> ${window.location.pathname}
+            </div>
+        `;
+        
+        // URLs calculadas
+        const baseUrl = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
+        const cssUrl = baseUrl + 'assets/css/styles.css';
+        const jsUrl = baseUrl + 'assets/js/main.js';
+        
+        document.getElementById('url-info').innerHTML = `
+            <div class="code-block">
+                <strong>Base URL:</strong> ${baseUrl}<br>
+                <strong>CSS URL:</strong> ${cssUrl}<br>
+                <strong>JS URL:</strong> ${jsUrl}<br>
+                <strong>Index URL:</strong> ${baseUrl}index.html
+            </div>
+        `;
+        
+        // Verificar carga de CSS
+        function checkCSSLoad() {
+            const link = document.getElementById('external-css');
+            const statusDiv = document.getElementById('css-load-status');
+            
+            // Crear elemento de prueba
+            const testDiv = document.createElement('div');
+            testDiv.className = 'container';
+            testDiv.style.visibility = 'hidden';
+            testDiv.style.position = 'absolute';
+            document.body.appendChild(testDiv);
+            
+            setTimeout(() => {
+                const computedStyle = window.getComputedStyle(testDiv);
+                const hasExternalCSS = computedStyle.backgroundColor !== 'rgba(0, 0, 0, 0)' && 
+                                      computedStyle.backgroundColor !== 'transparent';
+                
+                if (hasExternalCSS || computedStyle.borderRadius !== '0px') {
+                    statusDiv.innerHTML = '<span class="success">✅ CSS externo cargado correctamente</span>';
+                } else {
+                    statusDiv.innerHTML = '<span class="error">❌ CSS externo NO cargado</span>';
+                    checkCSSError();
+                }
+                
+                document.body.removeChild(testDiv);
+            }, 500);
+        }
+        
+        // Verificar errores específicos de CSS
+        function checkCSSError() {
+            fetch(cssUrl)
+                .then(response => {
+                    if (response.ok) {
+                        return response.text();
+                    }
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                })
+                .then(cssText => {
+                    document.getElementById('css-path-info').innerHTML = `
+                        <div class="code-block">
+                            <span class="success">✅ Archivo CSS accesible</span><br>
+                            <strong>Tamaño:</strong> ${cssText.length} caracteres<br>
+                            <strong>Primeras líneas:</strong><br>
+                            <pre>${cssText.substring(0, 200)}...</pre>
+                        </div>
+                    `;
+                    
+                    // Si el CSS es accesible pero no se aplica, hay un problema de MIME type
+                    document.getElementById('solutions').innerHTML = `
+                        <div class="warning">⚠️ CSS accesible pero no aplicado</div>
+                        <p><strong>Posibles soluciones:</strong></p>
+                        <ol>
+                            <li>Verificar Content-Type del servidor (debe ser text/css)</li>
+                            <li>Verificar configuración .htaccess</li>
+                            <li>Limpiar caché del navegador</li>
+                            <li>Verificar CSP headers</li>
+                        </ol>
+                        <div class="code-block">
+                            <strong>Agregar a .htaccess:</strong><br>
+                            AddType text/css .css<br>
+                            Header set Content-Type "text/css; charset=utf-8"
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    document.getElementById('css-path-info').innerHTML = `
+                        <div class="code-block">
+                            <span class="error">❌ Error accediendo CSS: ${error.message}</span>
+                        </div>
+                    `;
+                    
+                    document.getElementById('solutions').innerHTML = `
+                        <div class="error">❌ Archivo CSS no accesible</div>
+                        <p><strong>Soluciones a probar:</strong></p>
+                        <ol>
+                            <li>Verificar que el archivo exists/css/styles.css existe</li>
+                            <li>Verificar permisos del archivo (644) y directorio (755)</li>
+                            <li>Verificar configuración del servidor web</li>
+                            <li>Probar acceso directo: <a href="${cssUrl}" target="_blank">${cssUrl}</a></li>
+                        </ol>
+                    `;
+                });
+        }
+        
+        // Prueba de red general
+        async function runNetworkTests() {
+            const tests = [
+                { name: 'CSS', url: cssUrl },
+                { name: 'JS', url: jsUrl },
+                { name: 'Index', url: baseUrl + 'index.html' }
+            ];
+            
+            let results = '<div class="code-block"><strong>Pruebas de red:</strong><br>';
+            
+            for (const test of tests) {
+                try {
+                    const response = await fetch(test.url, { method: 'HEAD' });
+                    const status = response.ok ? 
+                        `<span class="success">✅ ${response.status}</span>` : 
+                        `<span class="error">❌ ${response.status}</span>`;
+                    results += `${test.name}: ${status} (${response.headers.get('content-type') || 'sin tipo'})<br>`;
+                } catch (error) {
+                    results += `${test.name}: <span class="error">❌ Error de red</span><br>`;
+                }
+            }
+            
+            results += '</div>';
+            document.getElementById('network-test').innerHTML = results;
+        }
+        
+        // Ejecutar todas las pruebas
+        window.addEventListener('load', () => {
+            checkCSSLoad();
+            runNetworkTests();
+        });
+        
+        // Log adicional
+        console.log('Base URL:', baseUrl);
+        console.log('CSS URL:', cssUrl);
+        console.log('Iniciando pruebas de red...');
+    </script>
+</body>
+</html>
