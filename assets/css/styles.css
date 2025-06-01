@@ -104,6 +104,7 @@ h4 {
     grid-template-columns: 1fr 1fr;
     gap: 30px;
     margin: 20px 0;
+    width: 100%;
 }
 
 .charts-grid {
@@ -115,9 +116,9 @@ h4 {
 }
 
 .charts-grid .chart-container {
-    height: 350px;
-    min-height: 350px;
-    max-height: 350px;
+    height: 500px;
+    min-height: 500px;
+    max-height: 500px;
 }
 
 .summary-grid {
@@ -135,6 +136,7 @@ h4 {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     border: 3px solid;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
 }
 
 .scenario-panel:hover {
@@ -203,7 +205,8 @@ h4 {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    table-layout: fixed;
+    table-layout: auto;
+    min-width: 100%;
 }
 
 .monthly-table th,
@@ -233,6 +236,7 @@ h4 {
     text-align: left;
     padding-left: 8px;
     font-size: 0.75em;
+    min-width: 120px;
 }
 
 .monthly-table tbody tr:hover {
@@ -318,15 +322,17 @@ h4 {
 /* ===== CHART CONTAINERS ===== */
 .chart-container {
     margin: 30px 0;
-    padding: 20px;
+    padding: 25px;
     background: white;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 550px;
+    min-height: 550px;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .chart-container:hover {
@@ -335,7 +341,7 @@ h4 {
 
 .chart-container canvas {
     max-width: 100% !important;
-    max-height: 350px !important;
+    max-height: 480px !important;
     width: auto !important;
     height: auto !important;
 }
@@ -507,15 +513,15 @@ h4 {
     }
     
     .chart-container {
-        height: 300px;
-        min-height: 300px;
-        max-height: 300px;
+        height: 450px;
+        min-height: 450px;
+        max-height: 450px;
     }
     
     .charts-grid .chart-container {
-        height: 300px;
-        min-height: 300px;
-        max-height: 300px;
+        height: 450px;
+        min-height: 450px;
+        max-height: 450px;
     }
 }
 
@@ -562,15 +568,15 @@ h4 {
     
     .chart-container {
         padding: 15px;
-        height: 250px;
-        min-height: 250px;
-        max-height: 250px;
+        height: 400px;
+        min-height: 400px;
+        max-height: 400px;
     }
     
     .charts-grid .chart-container {
-        height: 250px;
-        min-height: 250px;
-        max-height: 250px;
+        height: 400px;
+        min-height: 400px;
+        max-height: 400px;
     }
     
     .executive-summary,
@@ -595,6 +601,7 @@ h4 {
     .monthly-table th.concept-header {
         width: 80px;
         font-size: 0.6em;
+        min-width: 80px;
     }
     
     .scenario-title {
@@ -613,15 +620,15 @@ h4 {
     
     .chart-container {
         padding: 10px;
-        height: 200px;
-        min-height: 200px;
-        max-height: 200px;
+        height: 350px;
+        min-height: 350px;
+        max-height: 350px;
     }
     
     .charts-grid .chart-container {
-        height: 200px;
-        min-height: 200px;
-        max-height: 200px;
+        height: 350px;
+        min-height: 350px;
+        max-height: 350px;
     }
 }
 
