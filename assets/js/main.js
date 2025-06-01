@@ -234,7 +234,7 @@ function createWaterfallChart1_2025() {
     charts.waterfall1_2025 = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['(1) Salario', '(2) Consultoría', '(3) Cobros/Finiquito', '(4) Rendimientos', '(5) Lump Sum 5M', '(6) Intereses Pareja', '(7) Gastos Personales', '(8) Pago Deudas', '(9) Meta Ahorro', '(10) Flujo Neto'],
+            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
             datasets: [{
                 label: 'Miles MXN',
                 data: [322.1, consultoriaTotal, 205.5, 2.3, 600.0, 440.0, -295.2, -118.3, -600.0, (322.1 + consultoriaTotal + 205.5 + 2.3 + 600.0 + 440.0 - 295.2 - 118.3 - 600.0)],
@@ -260,6 +260,10 @@ function createWaterfallChart1_2025() {
                 },
                 tooltip: {
                     callbacks: {
+                        title: function(context) {
+                            const labels = ['Salario', 'Consultoría', 'Cobros/Finiquito', 'Rendimientos', 'Lump Sum 5M', 'Intereses Pareja', 'Gastos Personales', 'Pago Deudas', 'Meta Ahorro', 'Flujo Neto'];
+                            return `(${context[0].label}) ${labels[context[0].dataIndex]}`;
+                        },
                         label: function(context) {
                             return `${context.parsed.y.toFixed(1)}K MXN`;
                         }
@@ -280,8 +284,7 @@ function createWaterfallChart1_2025() {
                 },
                 x: {
                     ticks: {
-                        maxRotation: 45,
-                        font: { size: 9 }
+                        font: { size: 12 }
                     },
                     grid: {
                         display: false
@@ -297,7 +300,7 @@ function createWaterfallChart1_2025() {
                     left: 10,
                     right: 10,
                     top: 10,
-                    bottom: 30
+                    bottom: 20
                 }
             }
         }
@@ -311,7 +314,7 @@ function createWaterfallChart2_2025() {
     charts.waterfall2_2025 = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['(1) Salario', '(2) Nuevo Trabajo', '(3) Cobros/Finiquito', '(4) Rendimientos', '(5) Lump Sum 5M', '(6) Gastos Personales', '(7) Pago Deudas', '(8) Meta Ahorro', '(9) Flujo Neto'],
+            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
             datasets: [{
                 label: 'Miles MXN',
                 data: [322.1, 265.8, 205.5, 2.3, 600.0, -286.8, -118.3, -300.0, 690.6],
@@ -337,6 +340,10 @@ function createWaterfallChart2_2025() {
                 },
                 tooltip: {
                     callbacks: {
+                        title: function(context) {
+                            const labels = ['Salario', 'Nuevo Trabajo', 'Cobros/Finiquito', 'Rendimientos', 'Lump Sum 5M', 'Gastos Personales', 'Pago Deudas', 'Meta Ahorro', 'Flujo Neto'];
+                            return `(${context[0].label}) ${labels[context[0].dataIndex]}`;
+                        },
                         label: function(context) {
                             return `${context.parsed.y.toFixed(1)}K MXN`;
                         }
@@ -357,8 +364,7 @@ function createWaterfallChart2_2025() {
                 },
                 x: {
                     ticks: {
-                        maxRotation: 45,
-                        font: { size: 9 }
+                        font: { size: 12 }
                     },
                     grid: {
                         display: false
@@ -374,7 +380,7 @@ function createWaterfallChart2_2025() {
                     left: 10,
                     right: 10,
                     top: 10,
-                    bottom: 30
+                    bottom: 20
                 }
             }
         }
@@ -388,7 +394,7 @@ function createWaterfallChart1_2026() {
     charts.waterfall1_2026 = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['(1) Superávit 2025', '(2) Intereses 5.35M', '(3) Smability', '(4) Gastos Vida', '(5) Flujo Neto'],
+            labels: ['1', '2', '3', '4', '5'],
             datasets: [{
                 label: 'Miles MXN',
                 data: [140.4, 542.4, 331.0, -496.8, 517.0],
@@ -411,6 +417,10 @@ function createWaterfallChart1_2026() {
                 },
                 tooltip: {
                     callbacks: {
+                        title: function(context) {
+                            const labels = ['Superávit 2025', 'Intereses 5.35M', 'Smability', 'Gastos Vida', 'Flujo Neto'];
+                            return `(${context[0].label}) ${labels[context[0].dataIndex]}`;
+                        },
                         label: function(context) {
                             return `${context.parsed.y.toFixed(1)}K MXN`;
                         }
@@ -431,7 +441,7 @@ function createWaterfallChart1_2026() {
                 },
                 x: {
                     ticks: {
-                        font: { size: 10 }
+                        font: { size: 12 }
                     },
                     grid: {
                         display: false
@@ -447,7 +457,7 @@ function createWaterfallChart1_2026() {
                     left: 10,
                     right: 10,
                     top: 10,
-                    bottom: 30
+                    bottom: 20
                 }
             }
         }
@@ -461,7 +471,7 @@ function createWaterfallChart2_2026() {
     charts.waterfall2_2026 = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['(1) Nuevo Trabajo', '(2) Intereses Ahorro', '(3) Smability', '(4) Gastos Vida', '(5) Flujo Neto'],
+            labels: ['1', '2', '3', '4', '5'],
             datasets: [{
                 label: 'Miles MXN',
                 data: [1063.2, 325.2, 90.0, -463.2, 1015.2],
@@ -484,6 +494,10 @@ function createWaterfallChart2_2026() {
                 },
                 tooltip: {
                     callbacks: {
+                        title: function(context) {
+                            const labels = ['Nuevo Trabajo', 'Intereses Ahorro', 'Smability', 'Gastos Vida', 'Flujo Neto'];
+                            return `(${context[0].label}) ${labels[context[0].dataIndex]}`;
+                        },
                         label: function(context) {
                             return `${context.parsed.y.toFixed(1)}K MXN`;
                         }
@@ -504,7 +518,7 @@ function createWaterfallChart2_2026() {
                 },
                 x: {
                     ticks: {
-                        font: { size: 10 }
+                        font: { size: 12 }
                     },
                     grid: {
                         display: false
@@ -520,7 +534,7 @@ function createWaterfallChart2_2026() {
                     left: 10,
                     right: 10,
                     top: 10,
-                    bottom: 30
+                    bottom: 20
                 }
             }
         }
