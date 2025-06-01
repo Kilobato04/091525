@@ -234,7 +234,7 @@ function createWaterfallChart1_2025() {
     charts.waterfall1_2025 = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Salario', 'Consultoría', 'Cobros/Finiquito', 'Rendimientos', 'Lump Sum 5M', 'Intereses Pareja', 'Gastos Personales', 'Pago Deudas', 'Meta Ahorro', 'Flujo Neto'],
+            labels: ['(1) Salario', '(2) Consultoría', '(3) Cobros/Finiquito', '(4) Rendimientos', '(5) Lump Sum 5M', '(6) Intereses Pareja', '(7) Gastos Personales', '(8) Pago Deudas', '(9) Meta Ahorro', '(10) Flujo Neto'],
             datasets: [{
                 label: 'Miles MXN',
                 data: [322.1, consultoriaTotal, 205.5, 2.3, 600.0, 440.0, -295.2, -118.3, -600.0, (322.1 + consultoriaTotal + 205.5 + 2.3 + 600.0 + 440.0 - 295.2 - 118.3 - 600.0)],
@@ -255,7 +255,7 @@ function createWaterfallChart1_2025() {
                 legend: { display: false },
                 title: {
                     display: true,
-                    text: 'Flujo de Efectivo Anual 2025',
+                    text: 'Flujo de Efectivo Anual 2025 - Escenario 1',
                     font: { size: 16, weight: 'bold' }
                 },
                 tooltip: {
@@ -281,7 +281,7 @@ function createWaterfallChart1_2025() {
                 x: {
                     ticks: {
                         maxRotation: 45,
-                        font: { size: 10 }
+                        font: { size: 9 }
                     },
                     grid: {
                         display: false
@@ -297,31 +297,7 @@ function createWaterfallChart1_2025() {
                     left: 10,
                     right: 10,
                     top: 10,
-                    bottom: 10
-                }
-            },
-            layout: {
-                padding: {
-                    left: 10,
-                    right: 10,
-                    top: 10,
-                    bottom: 10
-                }
-            },
-            layout: {
-                padding: {
-                    left: 10,
-                    right: 10,
-                    top: 10,
-                    bottom: 10
-                }
-            },
-            layout: {
-                padding: {
-                    left: 10,
-                    right: 10,
-                    top: 10,
-                    bottom: 10
+                    bottom: 30
                 }
             }
         }
@@ -335,7 +311,7 @@ function createWaterfallChart2_2025() {
     charts.waterfall2_2025 = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Salario', 'Nuevo Trabajo', 'Cobros/Finiquito', 'Rendimientos', 'Lump Sum 5M', 'Gastos Personales', 'Pago Deudas', 'Meta Ahorro', 'Flujo Neto'],
+            labels: ['(1) Salario', '(2) Nuevo Trabajo', '(3) Cobros/Finiquito', '(4) Rendimientos', '(5) Lump Sum 5M', '(6) Gastos Personales', '(7) Pago Deudas', '(8) Meta Ahorro', '(9) Flujo Neto'],
             datasets: [{
                 label: 'Miles MXN',
                 data: [322.1, 265.8, 205.5, 2.3, 600.0, -286.8, -118.3, -300.0, 690.6],
@@ -356,7 +332,7 @@ function createWaterfallChart2_2025() {
                 legend: { display: false },
                 title: {
                     display: true,
-                    text: 'Flujo de Efectivo Anual 2025',
+                    text: 'Flujo de Efectivo Anual 2025 - Escenario 2',
                     font: { size: 16, weight: 'bold' }
                 },
                 tooltip: {
@@ -382,7 +358,7 @@ function createWaterfallChart2_2025() {
                 x: {
                     ticks: {
                         maxRotation: 45,
-                        font: { size: 10 }
+                        font: { size: 9 }
                     },
                     grid: {
                         display: false
@@ -392,6 +368,14 @@ function createWaterfallChart2_2025() {
             animation: {
                 duration: 1000,
                 easing: 'easeInOutQuart'
+            },
+            layout: {
+                padding: {
+                    left: 10,
+                    right: 10,
+                    top: 10,
+                    bottom: 30
+                }
             }
         }
     });
@@ -404,7 +388,7 @@ function createWaterfallChart1_2026() {
     charts.waterfall1_2026 = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Superávit 2025', 'Intereses 5.35M', 'Smability', 'Gastos Vida', 'Flujo Neto'],
+            labels: ['(1) Superávit 2025', '(2) Intereses 5.35M', '(3) Smability', '(4) Gastos Vida', '(5) Flujo Neto'],
             datasets: [{
                 label: 'Miles MXN',
                 data: [140.4, 542.4, 331.0, -496.8, 517.0],
@@ -422,7 +406,7 @@ function createWaterfallChart1_2026() {
                 legend: { display: false },
                 title: {
                     display: true,
-                    text: 'Flujo de Efectivo Anual 2026',
+                    text: 'Flujo de Efectivo Anual 2026 - Escenario 1',
                     font: { size: 16, weight: 'bold' }
                 },
                 tooltip: {
@@ -457,6 +441,14 @@ function createWaterfallChart1_2026() {
             animation: {
                 duration: 1000,
                 easing: 'easeInOutQuart'
+            },
+            layout: {
+                padding: {
+                    left: 10,
+                    right: 10,
+                    top: 10,
+                    bottom: 30
+                }
             }
         }
     });
@@ -469,7 +461,7 @@ function createWaterfallChart2_2026() {
     charts.waterfall2_2026 = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Nuevo Trabajo', 'Intereses Ahorro', 'Smability', 'Gastos Vida', 'Flujo Neto'],
+            labels: ['(1) Nuevo Trabajo', '(2) Intereses Ahorro', '(3) Smability', '(4) Gastos Vida', '(5) Flujo Neto'],
             datasets: [{
                 label: 'Miles MXN',
                 data: [1063.2, 325.2, 90.0, -463.2, 1015.2],
@@ -487,7 +479,7 @@ function createWaterfallChart2_2026() {
                 legend: { display: false },
                 title: {
                     display: true,
-                    text: 'Flujo de Efectivo Anual 2026',
+                    text: 'Flujo de Efectivo Anual 2026 - Escenario 2',
                     font: { size: 16, weight: 'bold' }
                 },
                 tooltip: {
@@ -522,6 +514,14 @@ function createWaterfallChart2_2026() {
             animation: {
                 duration: 1000,
                 easing: 'easeInOutQuart'
+            },
+            layout: {
+                padding: {
+                    left: 10,
+                    right: 10,
+                    top: 10,
+                    bottom: 30
+                }
             }
         }
     });
@@ -628,7 +628,7 @@ function createComparisonChart() {
                     title: {
                         display: true,
                         text: 'Flujo Neto (Miles MXN)',
-                        font: { size: 12, weight: 'bold' }
+                        font: { size: 14, weight: 'bold' }
                     },
                     grid: {
                         color: 'rgba(0,0,0,0.1)',
@@ -637,18 +637,19 @@ function createComparisonChart() {
                     ticks: {
                         callback: function(value) {
                             return value.toFixed(0) + 'K';
-                        }
+                        },
+                        font: { size: 12 }
                     }
                 },
                 x: {
                     title: {
                         display: true,
                         text: 'Período',
-                        font: { size: 12, weight: 'bold' }
+                        font: { size: 14, weight: 'bold' }
                     },
                     ticks: {
                         maxRotation: 45,
-                        font: { size: 10 }
+                        font: { size: 11 }
                     },
                     grid: {
                         display: false
@@ -665,10 +666,10 @@ function createComparisonChart() {
             },
             layout: {
                 padding: {
-                    left: 10,
-                    right: 10,
-                    top: 10,
-                    bottom: 10
+                    left: 15,
+                    right: 15,
+                    top: 15,
+                    bottom: 40
                 }
             }
         }
