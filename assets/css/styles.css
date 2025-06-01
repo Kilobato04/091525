@@ -116,9 +116,9 @@ h4 {
 }
 
 .charts-grid .chart-container {
-    height: 500px;
-    min-height: 500px;
-    max-height: 500px;
+    height: 650px;
+    min-height: 650px;
+    max-height: 650px;
 }
 
 .summary-grid {
@@ -199,7 +199,7 @@ h4 {
 .monthly-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.75em;
+    font-size: 0.65em;
     margin: 15px 0;
     background: white;
     border-radius: 8px;
@@ -212,18 +212,20 @@ h4 {
 .monthly-table th,
 .monthly-table td {
     border: 1px solid #ddd;
-    padding: 8px 4px;
+    padding: 6px 3px;
     text-align: center;
     transition: background-color 0.2s ease;
     word-wrap: break-word;
     overflow: hidden;
+    font-size: 0.9em;
+    line-height: 1.2;
 }
 
 .monthly-table th {
     background: #34495e;
     color: white;
     font-weight: bold;
-    font-size: 0.7em;
+    font-size: 0.65em;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -232,11 +234,11 @@ h4 {
 
 .monthly-table th.concept-header {
     background: #2c3e50;
-    width: 120px;
+    width: 110px;
     text-align: left;
-    padding-left: 8px;
-    font-size: 0.75em;
-    min-width: 120px;
+    padding-left: 6px;
+    font-size: 0.7em;
+    min-width: 110px;
 }
 
 .monthly-table tbody tr:hover {
@@ -329,8 +331,8 @@ h4 {
     transition: transform 0.3s ease;
     position: relative;
     width: 100%;
-    height: 550px;
-    min-height: 550px;
+    height: 650px;
+    min-height: 650px;
     overflow: hidden;
     box-sizing: border-box;
 }
@@ -341,7 +343,7 @@ h4 {
 
 .chart-container canvas {
     max-width: 100% !important;
-    max-height: 480px !important;
+    max-height: 580px !important;
     width: auto !important;
     height: auto !important;
 }
@@ -395,10 +397,11 @@ h4 {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
 }
 
 .comparison-table th {
@@ -415,14 +418,21 @@ h4 {
     text-align: center;
     border-bottom: 1px solid #ddd;
     transition: background-color 0.2s ease;
+    color: #2c3e50;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.9);
 }
 
 .comparison-table tbody tr:hover {
-    background-color: rgba(52, 73, 94, 0.05);
+    background-color: rgba(52, 73, 94, 0.1);
 }
 
-.comparison-table tbody tr:nth-child(even) {
-    background-color: #f8f9fa;
+.comparison-table tbody tr:hover td {
+    background-color: rgba(52, 73, 94, 0.1);
+}
+
+.comparison-table tbody tr:nth-child(even) td {
+    background-color: rgba(248, 249, 250, 0.9);
 }
 
 /* ===== RECOMMENDATIONS ===== */
@@ -504,7 +514,7 @@ h4 {
     }
     
     .monthly-table {
-        font-size: 0.65em;
+        font-size: 0.6em;
     }
     
     .nav-tab {
@@ -513,15 +523,15 @@ h4 {
     }
     
     .chart-container {
-        height: 450px;
-        min-height: 450px;
-        max-height: 450px;
+        height: 550px;
+        min-height: 550px;
+        max-height: 550px;
     }
     
     .charts-grid .chart-container {
-        height: 450px;
-        min-height: 450px;
-        max-height: 450px;
+        height: 550px;
+        min-height: 550px;
+        max-height: 550px;
     }
 }
 
@@ -550,12 +560,12 @@ h4 {
     }
     
     .monthly-table {
-        font-size: 0.6em;
+        font-size: 0.55em;
     }
     
     .monthly-table th,
     .monthly-table td {
-        padding: 4px 2px;
+        padding: 3px 2px;
     }
     
     .scenario-panel {
@@ -568,15 +578,15 @@ h4 {
     
     .chart-container {
         padding: 15px;
-        height: 400px;
-        min-height: 400px;
-        max-height: 400px;
+        height: 500px;
+        min-height: 500px;
+        max-height: 500px;
     }
     
     .charts-grid .chart-container {
-        height: 400px;
-        min-height: 400px;
-        max-height: 400px;
+        height: 500px;
+        min-height: 500px;
+        max-height: 500px;
     }
     
     .executive-summary,
@@ -595,13 +605,13 @@ h4 {
 
 @media (max-width: 480px) {
     .monthly-table {
-        font-size: 0.5em;
+        font-size: 0.45em;
     }
     
     .monthly-table th.concept-header {
-        width: 80px;
-        font-size: 0.6em;
-        min-width: 80px;
+        width: 70px;
+        font-size: 0.55em;
+        min-width: 70px;
     }
     
     .scenario-title {
@@ -620,15 +630,15 @@ h4 {
     
     .chart-container {
         padding: 10px;
-        height: 350px;
-        min-height: 350px;
-        max-height: 350px;
+        height: 450px;
+        min-height: 450px;
+        max-height: 450px;
     }
     
     .charts-grid .chart-container {
-        height: 350px;
-        min-height: 350px;
-        max-height: 350px;
+        height: 450px;
+        min-height: 450px;
+        max-height: 450px;
     }
 }
 
