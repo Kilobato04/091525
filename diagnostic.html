@@ -3,87 +3,800 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Diagnostic Test</title>
+    <title>Enhanced Cash Flow Tool v2.0.0 - Diagnostic Suite</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 20px;
             min-height: 100vh;
+            margin: 0;
         }
-        .test-container {
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .version-badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .test-section {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 4px solid #ffc107;
+            transition: all 0.3s ease;
+        }
+        
+        .test-section:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .test-section.success {
+            border-left-color: #28a745;
+        }
+        
+        .test-section.error {
+            border-left-color: #dc3545;
+        }
+        
+        .test-section.warning {
+            border-left-color: #ffc107;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-success { background: #28a745; }
+        .status-error { background: #dc3545; }
+        .status-warning { background: #ffc107; }
+        .status-info { background: #17a2b8; }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .feature-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.9em;
+        }
+        
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            margin: 10px 0;
+            overflow-x: auto;
+            border-left: 3px solid #007bff;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 5px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .btn:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        
+        .btn-success { background: #28a745; }
+        .btn-success:hover { background: #1e7e34; }
+        
+        .btn-warning { background: #ffc107; color: #212529; }
+        .btn-warning:hover { background: #e0a800; }
+        
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #28a745, #20c997);
+            transition: width 0.5s ease;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
             margin: 20px 0;
         }
-        .success { color: #00ff00; }
-        .error { color: #ff0000; }
-        .warning { color: #ffaa00; }
+        
+        .metric-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid;
+        }
+        
+        .alert-info {
+            background: rgba(23, 162, 184, 0.2);
+            border-left-color: #17a2b8;
+        }
+        
+        .alert-success {
+            background: rgba(40, 167, 69, 0.2);
+            border-left-color: #28a745;
+        }
+        
+        .alert-warning {
+            background: rgba(255, 193, 7, 0.2);
+            border-left-color: #ffc107;
+        }
+        
+        .alert-error {
+            background: rgba(220, 53, 69, 0.2);
+            border-left-color: #dc3545;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 10px;
+            }
+            
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>🔍 CSS Diagnostic Test Page</h1>
-    
-    <div class="test-container">
-        <h2>Inline CSS Test</h2>
-        <p class="success">✅ If you see this styled (green text with background), inline CSS is working.</p>
-    </div>
-    
-    <div class="test-container">
-        <h2>External CSS Test</h2>
-        <link rel="stylesheet" href="assets/css/styles.css">
-        <p>If the page below has proper styling (gradients, colors, etc.), external CSS is loading:</p>
-        
-        <div class="container" style="max-width: 800px;">
-            <div class="nav-tabs">
-                <button class="nav-tab active">Test Tab</button>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 Enhanced Cash Flow Analysis Tool</h1>
+            <span class="version-badge">v2.0.0 Diagnostic Suite</span>
+            <p>Comprehensive diagnostic and testing suite for enhanced features</p>
+        </div>
+
+        <!-- Real-time Status Dashboard -->
+        <div class="test-section" id="status-dashboard">
+            <h2>📊 Real-time Status Dashboard</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="overall-progress" style="width: 0%"></div>
             </div>
-            <div class="scenario-panel scenario-1" style="margin: 20px 0;">
-                <div class="scenario-title">Test Scenario</div>
-                <p>This should have orange styling if CSS loads properly.</p>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value" id="tests-passed">0</div>
+                    <div class="metric-label">Tests Passed</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="features-detected">0</div>
+                    <div class="metric-label">Features Detected</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="performance-score">0</div>
+                    <div class="metric-label">Performance Score</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="compatibility-score">0</div>
+                    <div class="metric-label">Compatibility %</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-grid">
+            <!-- Enhanced Features Test -->
+            <div class="test-section" id="enhanced-features-test">
+                <h3><span class="status-indicator status-info"></span>Enhanced Features v2.0.0</h3>
+                <div class="feature-list">
+                    <div class="feature-item" id="feature-editable">🎯 Editable Cells</div>
+                    <div class="feature-item" id="feature-save">💾 Smart Save System</div>
+                    <div class="feature-item" id="feature-recommendations">🤖 Dynamic Recommendations</div>
+                    <div class="feature-item" id="feature-charts">📊 Real-time Charts</div>
+                    <div class="feature-item" id="feature-autosave">⚡ Auto-save</div>
+                    <div class="feature-item" id="feature-notifications">🔔 Notifications</div>
+                    <div class="feature-item" id="feature-keyboard">⌨️ Keyboard Navigation</div>
+                    <div class="feature-item" id="feature-mobile">📱 Mobile Optimized</div>
+                </div>
+                <button class="btn" onclick="testEnhancedFeatures()">Test Enhanced Features</button>
+            </div>
+
+            <!-- File Accessibility Test -->
+            <div class="test-section" id="file-access-test">
+                <h3><span class="status-indicator status-info"></span>File Accessibility</h3>
+                <div id="file-test-results">
+                    <p>⏳ Click to test file accessibility...</p>
+                </div>
+                <button class="btn" onclick="testFileAccess()">Test File Access</button>
+            </div>
+
+            <!-- Performance Metrics -->
+            <div class="test-section" id="performance-test">
+                <h3><span class="status-indicator status-info"></span>Performance Analysis</h3>
+                <div id="performance-results">
+                    <p>⏳ Click to run performance tests...</p>
+                </div>
+                <button class="btn" onclick="testPerformance()">Run Performance Test</button>
+            </div>
+
+            <!-- Browser Compatibility -->
+            <div class="test-section" id="browser-test">
+                <h3><span class="status-indicator status-info"></span>Browser Compatibility</h3>
+                <div id="browser-results">
+                    <p>⏳ Checking browser compatibility...</p>
+                </div>
+                <button class="btn" onclick="testBrowserCompatibility()">Check Compatibility</button>
+            </div>
+
+            <!-- Local Storage Test -->
+            <div class="test-section" id="storage-test">
+                <h3><span class="status-indicator status-info"></span>Storage Functionality</h3>
+                <div id="storage-results">
+                    <p>⏳ Testing data persistence...</p>
+                </div>
+                <button class="btn" onclick="testStorage()">Test Storage</button>
+            </div>
+
+            <!-- Chart.js Integration -->
+            <div class="test-section" id="charts-test">
+                <h3><span class="status-indicator status-info"></span>Chart.js Integration</h3>
+                <div id="charts-results">
+                    <p>⏳ Testing chart functionality...</p>
+                </div>
+                <button class="btn" onclick="testCharts()">Test Charts</button>
+            </div>
+        </div>
+
+        <!-- System Information -->
+        <div class="test-section">
+            <h3>🖥️ System Information</h3>
+            <div class="code-block" id="system-info">
+                Loading system information...
+            </div>
+        </div>
+
+        <!-- URL and Path Information -->
+        <div class="test-section">
+            <h3>🔗 URL and Path Information</h3>
+            <div class="code-block" id="url-info">
+                Loading URL information...
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="test-section">
+            <h3>⚡ Quick Actions</h3>
+            <a href="index.html" class="btn btn-success">📊 Open Main Application</a>
+            <a href="test.html" class="btn btn-warning">🧪 Open Test Page</a>
+            <button class="btn" onclick="runAllTests()">🚀 Run All Tests</button>
+            <button class="btn" onclick="exportDiagnosticReport()">📄 Export Report</button>
+        </div>
+
+        <!-- Results Summary -->
+        <div id="results-summary" style="display: none;">
+            <div class="alert alert-info">
+                <h4>📋 Diagnostic Summary</h4>
+                <div id="summary-content"></div>
             </div>
         </div>
     </div>
-    
-    <div class="test-container">
-        <h2>File Path Tests</h2>
-        <p>Testing file accessibility:</p>
-        <ul>
-            <li><a href="assets/css/styles.css" target="_blank">Direct CSS Link Test</a> - Should show CSS code</li>
-            <li><a href="assets/js/main.js" target="_blank">Direct JS Link Test</a> - Should show JavaScript code</li>
-            <li><a href="index.html">Main App Link</a> - Should load the cash flow tool</li>
-        </ul>
-    </div>
-    
-    <div class="test-container">
-        <h2>Debug Information</h2>
-        <p>Current URL: <span id="current-url"></span></p>
-        <p>Expected CSS Path: <span id="css-path"></span></p>
-        <p>Expected JS Path: <span id="js-path"></span></p>
-    </div>
-    
+
     <script>
-        document.getElementById('current-url').textContent = window.location.href;
-        document.getElementById('css-path').textContent = window.location.origin + window.location.pathname.replace('diagnostic.html', '') + 'assets/css/styles.css';
-        document.getElementById('js-path').textContent = window.location.origin + window.location.pathname.replace('diagnostic.html', '') + 'assets/js/main.js';
-        
-        // Test CSS loading
-        fetch('assets/css/styles.css')
-            .then(response => {
-                if (response.ok) {
-                    console.log('✅ CSS file accessible');
-                    document.body.innerHTML += '<div class="test-container"><p class="success">✅ CSS file is accessible via fetch</p></div>';
-                } else {
-                    console.log('❌ CSS file not accessible:', response.status);
-                    document.body.innerHTML += '<div class="test-container"><p class="error">❌ CSS file not accessible: ' + response.status + '</p></div>';
+        // Global variables for tracking
+        let testResults = {
+            total: 0,
+            passed: 0,
+            failed: 0,
+            warnings: 0
+        };
+
+        let featuresDetected = 0;
+        let performanceScore = 0;
+        let compatibilityScore = 0;
+
+        // Initialize diagnostics on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSystemInfo();
+            loadURLInfo();
+            testBrowserCompatibility();
+            updateDashboard();
+        });
+
+        // System Information
+        function loadSystemInfo() {
+            const systemInfo = {
+                userAgent: navigator.userAgent,
+                language: navigator.language,
+                platform: navigator.platform,
+                cookieEnabled: navigator.cookieEnabled,
+                onLine: navigator.onLine,
+                screenResolution: `${screen.width}x${screen.height}`,
+                colorDepth: `${screen.colorDepth}-bit`,
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                timestamp: new Date().toISOString()
+            };
+
+            document.getElementById('system-info').innerHTML = `
+<strong>Browser:</strong> ${systemInfo.userAgent}
+<strong>Language:</strong> ${systemInfo.language}
+<strong>Platform:</strong> ${systemInfo.platform}
+<strong>Cookies:</strong> ${systemInfo.cookieEnabled ? 'Enabled' : 'Disabled'}
+<strong>Online:</strong> ${systemInfo.onLine ? 'Yes' : 'No'}
+<strong>Screen:</strong> ${systemInfo.screenResolution} (${systemInfo.colorDepth})
+<strong>Timezone:</strong> ${systemInfo.timezone}
+<strong>Test Time:</strong> ${systemInfo.timestamp}
+            `;
+        }
+
+        // URL Information
+        function loadURLInfo() {
+            const baseUrl = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
+            const urls = {
+                current: window.location.href,
+                base: baseUrl,
+                css: baseUrl + 'assets/css/styles.css',
+                js: baseUrl + 'assets/js/main.js',
+                main: baseUrl + 'index.html'
+            };
+
+            document.getElementById('url-info').innerHTML = `
+<strong>Current URL:</strong> ${urls.current}
+<strong>Base URL:</strong> ${urls.base}
+<strong>CSS URL:</strong> ${urls.css}
+<strong>JS URL:</strong> ${urls.js}
+<strong>Main App:</strong> ${urls.main}
+            `;
+        }
+
+        // Test Enhanced Features
+        async function testEnhancedFeatures() {
+            const features = [
+                { id: 'feature-editable', test: 'editable', file: 'index.html' },
+                { id: 'feature-save', test: 'saveScenarioData', file: 'assets/js/main.js' },
+                { id: 'feature-recommendations', test: 'updateRecommendations', file: 'assets/js/main.js' },
+                { id: 'feature-charts', test: 'Chart', file: 'assets/js/main.js' },
+                { id: 'feature-autosave', test: 'autoSave', file: 'assets/js/main.js' },
+                { id: 'feature-notifications', test: 'showNotification', file: 'assets/js/main.js' },
+                { id: 'feature-keyboard', test: 'handleKeyboardNavigation', file: 'assets/js/main.js' },
+                { id: 'feature-mobile', test: '@media', file: 'assets/css/styles.css' }
+            ];
+
+            featuresDetected = 0;
+            
+            for (const feature of features) {
+                try {
+                    const response = await fetch(feature.file);
+                    const content = await response.text();
+                    const element = document.getElementById(feature.id);
+                    
+                    if (content.includes(feature.test)) {
+                        element.style.background = 'rgba(40, 167, 69, 0.3)';
+                        element.innerHTML += ' ✅';
+                        featuresDetected++;
+                        testResults.passed++;
+                    } else {
+                        element.style.background = 'rgba(220, 53, 69, 0.3)';
+                        element.innerHTML += ' ❌';
+                        testResults.failed++;
+                    }
+                } catch (error) {
+                    document.getElementById(feature.id).style.background = 'rgba(255, 193, 7, 0.3)';
+                    document.getElementById(feature.id).innerHTML += ' ⚠️';
+                    testResults.warnings++;
                 }
-            })
-            .catch(error => {
-                console.log('❌ CSS fetch error:', error);
-                document.body.innerHTML += '<div class="test-container"><p class="error">❌ CSS fetch error: ' + error.message + '</p></div>';
-            });
+                testResults.total++;
+            }
+
+            updateSection('enhanced-features-test', featuresDetected === features.length ? 'success' : 'warning');
+            updateDashboard();
+        }
+
+        // Test File Access
+        async function testFileAccess() {
+            const files = [
+                'index.html',
+                'assets/css/styles.css',
+                'assets/js/main.js',
+                'assets/images/favicon.ico'
+            ];
+
+            let results = '<div class="code-block">';
+            let accessibleFiles = 0;
+
+            for (const file of files) {
+                try {
+                    const response = await fetch(file, { method: 'HEAD' });
+                    const status = response.ok ? 
+                        `<span style="color: #28a745;">✅ ${response.status}</span>` : 
+                        `<span style="color: #dc3545;">❌ ${response.status}</span>`;
+                    const size = response.headers.get('content-length') || 'Unknown';
+                    const type = response.headers.get('content-type') || 'Unknown';
+                    
+                    results += `${file}: ${status} (${size} bytes, ${type})<br>`;
+                    
+                    if (response.ok) {
+                        accessibleFiles++;
+                        testResults.passed++;
+                    } else {
+                        testResults.failed++;
+                    }
+                } catch (error) {
+                    results += `${file}: <span style="color: #ffc107;">⚠️ Network Error</span><br>`;
+                    testResults.warnings++;
+                }
+                testResults.total++;
+            }
+
+            results += '</div>';
+            document.getElementById('file-test-results').innerHTML = results;
+            
+            updateSection('file-access-test', accessibleFiles === files.length ? 'success' : 'error');
+            updateDashboard();
+        }
+
+        // Test Performance
+        async function testPerformance() {
+            const startTime = performance.now();
+            
+            // Test various performance metrics
+            const tests = [
+                { name: 'DOM Ready', test: () => document.readyState === 'complete' },
+                { name: 'CSS Loaded', test: () => document.styleSheets.length > 0 },
+                { name: 'Local Storage', test: () => typeof Storage !== 'undefined' },
+                { name: 'Canvas Support', test: () => !!document.createElement('canvas').getContext },
+                { name: 'Fetch API', test: () => typeof fetch !== 'undefined' }
+            ];
+
+            let passedTests = 0;
+            let results = '<div class="code-block">';
+
+            for (const test of tests) {
+                const passed = test.test();
+                results += `${test.name}: ${passed ? '✅ Pass' : '❌ Fail'}<br>`;
+                if (passed) {
+                    passedTests++;
+                    testResults.passed++;
+                } else {
+                    testResults.failed++;
+                }
+                testResults.total++;
+            }
+
+            const endTime = performance.now();
+            const loadTime = endTime - startTime;
+            
+            performanceScore = Math.round((passedTests / tests.length) * 100);
+            
+            results += `<br><strong>Performance Metrics:</strong><br>`;
+            results += `Test Execution Time: ${loadTime.toFixed(2)}ms<br>`;
+            results += `Performance Score: ${performanceScore}%<br>`;
+            results += `Memory Usage: ${(performance.memory?.usedJSHeapSize / 1024 / 1024).toFixed(2) || 'N/A'} MB<br>`;
+            results += '</div>';
+
+            document.getElementById('performance-results').innerHTML = results;
+            updateSection('performance-test', performanceScore > 80 ? 'success' : 'warning');
+            updateDashboard();
+        }
+
+        // Test Browser Compatibility
+        function testBrowserCompatibility() {
+            const features = [
+                { name: 'ES6 Classes', test: () => typeof class {} === 'function' },
+                { name: 'Arrow Functions', test: () => { try { eval('(() => {})'); return true; } catch { return false; } } },
+                { name: 'CSS Grid', test: () => CSS.supports('display', 'grid') },
+                { name: 'CSS Flexbox', test: () => CSS.supports('display', 'flex') },
+                { name: 'CSS Custom Properties', test: () => CSS.supports('--custom-property', 'value') },
+                { name: 'Async/Await', test: () => { try { eval('async function test() {}'); return true; } catch { return false; } } },
+                { name: 'Local Storage', test: () => typeof Storage !== 'undefined' },
+                { name: 'Canvas API', test: () => !!document.createElement('canvas').getContext },
+                { name: 'WebGL', test: () => !!document.createElement('canvas').getContext('webgl') },
+                { name: 'Touch Events', test: () => 'ontouchstart' in window }
+            ];
+
+            let supportedFeatures = 0;
+            let results = '<div class="code-block">';
+
+            for (const feature of features) {
+                const supported = feature.test();
+                results += `${feature.name}: ${supported ? '✅ Supported' : '❌ Not Supported'}<br>`;
+                if (supported) supportedFeatures++;
+            }
+
+            compatibilityScore = Math.round((supportedFeatures / features.length) * 100);
+            results += `<br><strong>Compatibility Score: ${compatibilityScore}%</strong></div>`;
+
+            document.getElementById('browser-results').innerHTML = results;
+            updateSection('browser-test', compatibilityScore > 80 ? 'success' : 'warning');
+            updateDashboard();
+        }
+
+        // Test Storage
+        function testStorage() {
+            let results = '<div class="code-block">';
+            let storageWorks = true;
+
+            try {
+                // Test localStorage
+                const testKey = 'diagnostic-test-' + Date.now();
+                const testValue = { test: true, timestamp: Date.now() };
+                
+                localStorage.setItem(testKey, JSON.stringify(testValue));
+                const retrieved = JSON.parse(localStorage.getItem(testKey));
+                localStorage.removeItem(testKey);
+                
+                if (retrieved && retrieved.test === true) {
+                    results += 'localStorage: ✅ Working<br>';
+                    testResults.passed++;
+                } else {
+                    results += 'localStorage: ❌ Failed<br>';
+                    storageWorks = false;
+                    testResults.failed++;
+                }
+
+                // Test sessionStorage
+                sessionStorage.setItem(testKey, JSON.stringify(testValue));
+                const sessionRetrieved = JSON.parse(sessionStorage.getItem(testKey));
+                sessionStorage.removeItem(testKey);
+                
+                if (sessionRetrieved && sessionRetrieved.test === true) {
+                    results += 'sessionStorage: ✅ Working<br>';
+                    testResults.passed++;
+                } else {
+                    results += 'sessionStorage: ❌ Failed<br>';
+                    storageWorks = false;
+                    testResults.failed++;
+                }
+
+                // Check existing data
+                const existingKeys = Object.keys(localStorage).filter(key => key.startsWith('cashflow'));
+                results += `<br>Existing Cash Flow Data: ${existingKeys.length} items<br>`;
+                existingKeys.forEach(key => {
+                    results += `- ${key}<br>`;
+                });
+
+            } catch (error) {
+                results += `Storage Error: ${error.message}<br>`;
+                storageWorks = false;
+                testResults.failed++;
+            }
+
+            testResults.total += 2;
+            results += '</div>';
+            
+            document.getElementById('storage-results').innerHTML = results;
+            updateSection('storage-test', storageWorks ? 'success' : 'error');
+            updateDashboard();
+        }
+
+        // Test Charts
+        async function testCharts() {
+            let results = '<div class="code-block">';
+            let chartsWork = true;
+
+            try {
+                // Check if Chart.js is loaded
+                if (typeof Chart !== 'undefined') {
+                    results += 'Chart.js Library: ✅ Loaded<br>';
+                    results += `Chart.js Version: ${Chart.version || 'Unknown'}<br>`;
+                    testResults.passed++;
+                } else {
+                    results += 'Chart.js Library: ❌ Not Loaded<br>';
+                    chartsWork = false;
+                    testResults.failed++;
+                }
+
+                // Test canvas support
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                if (ctx) {
+                    results += 'Canvas 2D Context: ✅ Supported<br>';
+                    testResults.passed++;
+                } else {
+                    results += 'Canvas 2D Context: ❌ Not Supported<br>';
+                    chartsWork = false;
+                    testResults.failed++;
+                }
+
+                // Test WebGL (for advanced charts)
+                const webglCtx = canvas.getContext('webgl');
+                if (webglCtx) {
+                    results += 'WebGL Context: ✅ Supported<br>';
+                    testResults.passed++;
+                } else {
+                    results += 'WebGL Context: ⚠️ Not Supported (Optional)<br>';
+                    testResults.warnings++;
+                }
+
+            } catch (error) {
+                results += `Charts Error: ${error.message}<br>`;
+                chartsWork = false;
+                testResults.failed++;
+            }
+
+            testResults.total += 3;
+            results += '</div>';
+            
+            document.getElementById('charts-results').innerHTML = results;
+            updateSection('charts-test', chartsWork ? 'success' : 'error');
+            updateDashboard();
+        }
+
+        // Update section status
+        function updateSection(sectionId, status) {
+            const section = document.getElementById(sectionId);
+            const indicator = section.querySelector('.status-indicator');
+            
+            section.classList.remove('success', 'error', 'warning');
+            section.classList.add(status);
+            
+            indicator.classList.remove('status-success', 'status-error', 'status-warning', 'status-info');
+            indicator.classList.add(`status-${status}`);
+        }
+
+        // Update dashboard
+        function updateDashboard() {
+            document.getElementById('tests-passed').textContent = testResults.passed;
+            document.getElementById('features-detected').textContent = featuresDetected;
+            document.getElementById('performance-score').textContent = performanceScore;
+            document.getElementById('compatibility-score').textContent = compatibilityScore;
+
+            const overallProgress = testResults.total > 0 ? (testResults.passed / testResults.total) * 100 : 0;
+            document.getElementById('overall-progress').style.width = overallProgress + '%';
+        }
+
+        // Run all tests
+        async function runAllTests() {
+            testResults = { total: 0, passed: 0, failed: 0, warnings: 0 };
+            featuresDetected = 0;
+            performanceScore = 0;
+            compatibilityScore = 0;
+
+            const testButton = event.target;
+            testButton.disabled = true;
+            testButton.textContent = '🔄 Running Tests...';
+
+            try {
+                await testEnhancedFeatures();
+                await testFileAccess();
+                await testPerformance();
+                testBrowserCompatibility();
+                testStorage();
+                await testCharts();
+
+                showResultsSummary();
+            } finally {
+                testButton.disabled = false;
+                testButton.textContent = '🚀 Run All Tests';
+            }
+        }
+
+        // Show results summary
+        function showResultsSummary() {
+            const summary = `
+                <strong>Test Results:</strong><br>
+                ✅ Passed: ${testResults.passed}<br>
+                ❌ Failed: ${testResults.failed}<br>
+                ⚠️ Warnings: ${testResults.warnings}<br>
+                📊 Total: ${testResults.total}<br><br>
+                
+                <strong>Feature Analysis:</strong><br>
+                🎯 Enhanced Features: ${featuresDetected}/8<br>
+                ⚡ Performance Score: ${performanceScore}%<br>
+                🌐 Compatibility Score: ${compatibilityScore}%<br><br>
+                
+                <strong>Overall Status:</strong> ${
+                    testResults.failed === 0 ? '✅ All systems operational' :
+                    testResults.failed < 3 ? '⚠️ Minor issues detected' :
+                    '❌ Multiple issues require attention'
+                }
+            `;
+
+            document.getElementById('summary-content').innerHTML = summary;
+            document.getElementById('results-summary').style.display = 'block';
+        }
+
+        // Export diagnostic report
+        function exportDiagnosticReport() {
+            const report = {
+                timestamp: new Date().toISOString(),
+                version: '2.0.0',
+                userAgent: navigator.userAgent,
+                url: window.location.href,
+                testResults: testResults,
+                features: {
+                    detected: featuresDetected,
+                    performance: performanceScore,
+                    compatibility: compatibilityScore
+                },
+                systemInfo: {
+                    language: navigator.language,
+                    platform: navigator.platform,
+                    screen: `${screen.width}x${screen.height}`,
+                    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+                }
+            };
+
+            const dataStr = JSON.stringify(report, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = `cashflow-diagnostic-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+        }
+
+        // Auto-run some tests on load
+        setTimeout(() => {
+            testStorage();
+        }, 1000);
     </script>
 </body>
 </html>
