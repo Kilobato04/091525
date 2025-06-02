@@ -29,6 +29,7 @@
             <div class="scenarios-grid">
                 <!-- Escenario 1: Consultoría -->
                 <div class="scenario-panel scenario-1">
+                    <button class="save-button" onclick="saveScenarioData('scenario1')" id="save-scenario1">💾 Save</button>
                     <div class="scenario-title">🔶 Escenario 1: Consultoría Independiente</div>
                     
                     <!-- 2025 Monthly Breakdown -->
@@ -54,319 +55,171 @@
                                     <td class="concept-header"><strong>INGRESOS</strong></td>
                                     <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td class="concept-header">Salario (1)</td>
-                                    <td class="positive">40.3</td>
-                                    <td class="positive">80.5</td>
-                                    <td class="positive">80.5</td>
-                                    <td class="positive">80.5</td>
-                                    <td class="positive">40.3</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="positive">322.1</td>
+                                    <td class="editable positive"><input type="number" value="40.3" step="0.1" data-concept="salario" data-month="0"></td>
+                                    <td class="editable positive"><input type="number" value="80.5" step="0.1" data-concept="salario" data-month="1"></td>
+                                    <td class="editable positive"><input type="number" value="80.5" step="0.1" data-concept="salario" data-month="2"></td>
+                                    <td class="editable positive"><input type="number" value="80.5" step="0.1" data-concept="salario" data-month="3"></td>
+                                    <td class="editable positive"><input type="number" value="40.3" step="0.1" data-concept="salario" data-month="4"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="salario" data-month="5"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="salario" data-month="6"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="salario" data-month="7"></td>
+                                    <td class="positive total-cell" id="salario-total-s1-2025">322.1</td>
                                 </tr>
-                                <tr class="editable">
+                                <tr class="data-row">
                                     <td class="concept-header">Consultoría (2)</td>
-                                    <td><input type="number" value="0" step="0.1" onchange="updateCalculations()"></td>
-                                    <td><input type="number" value="15" step="0.1" onchange="updateCalculations()"></td>
-                                    <td><input type="number" value="25" step="0.1" onchange="updateCalculations()"></td>
-                                    <td><input type="number" value="20" step="0.1" onchange="updateCalculations()"></td>
-                                    <td><input type="number" value="0" step="0.1" onchange="updateCalculations()"></td>
-                                    <td><input type="number" value="40" step="0.1" onchange="updateCalculations()"></td>
-                                    <td><input type="number" value="50" step="0.1" onchange="updateCalculations()"></td>
-                                    <td><input type="number" value="35" step="0.1" onchange="updateCalculations()"></td>
-                                    <td class="positive" id="consultoria-total-s1-2025">185.0</td>
+                                    <td class="editable"><input type="number" value="0" step="0.1" data-concept="consultoria" data-month="0"></td>
+                                    <td class="editable"><input type="number" value="15" step="0.1" data-concept="consultoria" data-month="1"></td>
+                                    <td class="editable"><input type="number" value="25" step="0.1" data-concept="consultoria" data-month="2"></td>
+                                    <td class="editable"><input type="number" value="20" step="0.1" data-concept="consultoria" data-month="3"></td>
+                                    <td class="editable"><input type="number" value="0" step="0.1" data-concept="consultoria" data-month="4"></td>
+                                    <td class="editable"><input type="number" value="40" step="0.1" data-concept="consultoria" data-month="5"></td>
+                                    <td class="editable"><input type="number" value="50" step="0.1" data-concept="consultoria" data-month="6"></td>
+                                    <td class="editable"><input type="number" value="35" step="0.1" data-concept="consultoria" data-month="7"></td>
+                                    <td class="positive total-cell" id="consultoria-total-s1-2025">185.0</td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td class="concept-header">Cobros/Finiquito (3)</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="positive">22.0</td>
-                                    <td class="positive">13.5</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="positive">170.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="positive">205.5</td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="cobros" data-month="0"></td>
+                                    <td class="editable positive"><input type="number" value="22" step="0.1" data-concept="cobros" data-month="1"></td>
+                                    <td class="editable positive"><input type="number" value="13.5" step="0.1" data-concept="cobros" data-month="2"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="cobros" data-month="3"></td>
+                                    <td class="editable positive"><input type="number" value="170" step="0.1" data-concept="cobros" data-month="4"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="cobros" data-month="5"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="cobros" data-month="6"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="cobros" data-month="7"></td>
+                                    <td class="positive total-cell" id="cobros-total-s1-2025">205.5</td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td class="concept-header">Rendimientos (4)</td>
-                                    <td class="positive">0.2</td>
-                                    <td class="positive">0.3</td>
-                                    <td class="positive">0.3</td>
-                                    <td class="positive">0.3</td>
-                                    <td class="positive">0.3</td>
-                                    <td class="positive">0.3</td>
-                                    <td class="positive">0.3</td>
-                                    <td class="positive">0.3</td>
-                                    <td class="positive">2.3</td>
+                                    <td class="editable positive"><input type="number" value="0.2" step="0.1" data-concept="rendimientos" data-month="0"></td>
+                                    <td class="editable positive"><input type="number" value="0.3" step="0.1" data-concept="rendimientos" data-month="1"></td>
+                                    <td class="editable positive"><input type="number" value="0.3" step="0.1" data-concept="rendimientos" data-month="2"></td>
+                                    <td class="editable positive"><input type="number" value="0.3" step="0.1" data-concept="rendimientos" data-month="3"></td>
+                                    <td class="editable positive"><input type="number" value="0.3" step="0.1" data-concept="rendimientos" data-month="4"></td>
+                                    <td class="editable positive"><input type="number" value="0.3" step="0.1" data-concept="rendimientos" data-month="5"></td>
+                                    <td class="editable positive"><input type="number" value="0.3" step="0.1" data-concept="rendimientos" data-month="6"></td>
+                                    <td class="editable positive"><input type="number" value="0.3" step="0.1" data-concept="rendimientos" data-month="7"></td>
+                                    <td class="positive total-cell" id="rendimientos-total-s1-2025">2.3</td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td class="concept-header">Lump Sum 5M (5)</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="positive">600.0</td>
-                                    <td class="positive">600.0</td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="lumpsum" data-month="0"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="lumpsum" data-month="1"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="lumpsum" data-month="2"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="lumpsum" data-month="3"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="lumpsum" data-month="4"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="lumpsum" data-month="5"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="lumpsum" data-month="6"></td>
+                                    <td class="editable positive"><input type="number" value="600" step="0.1" data-concept="lumpsum" data-month="7"></td>
+                                    <td class="positive total-cell" id="lumpsum-total-s1-2025">600.0</td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td class="concept-header">Intereses Pareja (6)</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="positive">440.0</td>
-                                    <td class="positive">440.0</td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="interesespareja" data-month="0"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="interesespareja" data-month="1"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="interesespareja" data-month="2"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="interesespareja" data-month="3"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="interesespareja" data-month="4"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="interesespareja" data-month="5"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="interesespareja" data-month="6"></td>
+                                    <td class="editable positive"><input type="number" value="440" step="0.1" data-concept="interesespareja" data-month="7"></td>
+                                    <td class="positive total-cell" id="interesespareja-total-s1-2025">440.0</td>
                                 </tr>
                                 <tr class="total-row">
                                     <td class="concept-header"><strong>Total Ingresos</strong></td>
-                                    <td class="positive" id="total-income-s1-2025-may"><strong>40.5</strong></td>
-                                    <td class="positive" id="total-income-s1-2025-jun"><strong>117.8</strong></td>
-                                    <td class="positive" id="total-income-s1-2025-jul"><strong>119.3</strong></td>
-                                    <td class="positive" id="total-income-s1-2025-aug"><strong>100.8</strong></td>
-                                    <td class="positive" id="total-income-s1-2025-sep"><strong>210.6</strong></td>
-                                    <td class="positive" id="total-income-s1-2025-oct"><strong>40.3</strong></td>
-                                    <td class="positive" id="total-income-s1-2025-nov"><strong>50.3</strong></td>
-                                    <td class="positive" id="total-income-s1-2025-dec"><strong>1075.6</strong></td>
-                                    <td class="positive" id="total-income-s1-2025-year"><strong>1754.9</strong></td>
+                                    <td class="positive total-cell" id="total-income-s1-2025-0"><strong>40.5</strong></td>
+                                    <td class="positive total-cell" id="total-income-s1-2025-1"><strong>117.8</strong></td>
+                                    <td class="positive total-cell" id="total-income-s1-2025-2"><strong>119.3</strong></td>
+                                    <td class="positive total-cell" id="total-income-s1-2025-3"><strong>100.8</strong></td>
+                                    <td class="positive total-cell" id="total-income-s1-2025-4"><strong>210.6</strong></td>
+                                    <td class="positive total-cell" id="total-income-s1-2025-5"><strong>40.3</strong></td>
+                                    <td class="positive total-cell" id="total-income-s1-2025-6"><strong>50.3</strong></td>
+                                    <td class="positive total-cell" id="total-income-s1-2025-7"><strong>1075.6</strong></td>
+                                    <td class="positive total-cell" id="total-income-s1-2025-year"><strong>1754.9</strong></td>
                                 </tr>
                                 
                                 <tr class="expense-row">
                                     <td class="concept-header"><strong>GASTOS</strong></td>
                                     <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td class="concept-header">Gastos Personales (7)</td>
-                                    <td class="negative">8.8</td>
-                                    <td class="negative">38.6</td>
-                                    <td class="negative">43.6</td>
-                                    <td class="negative">38.6</td>
-                                    <td class="negative">41.4</td>
-                                    <td class="negative">41.4</td>
-                                    <td class="negative">41.4</td>
-                                    <td class="negative">41.4</td>
-                                    <td class="negative">295.2</td>
+                                    <td class="editable negative"><input type="number" value="8.8" step="0.1" data-concept="gastospersonales" data-month="0"></td>
+                                    <td class="editable negative"><input type="number" value="38.6" step="0.1" data-concept="gastospersonales" data-month="1"></td>
+                                    <td class="editable negative"><input type="number" value="43.6" step="0.1" data-concept="gastospersonales" data-month="2"></td>
+                                    <td class="editable negative"><input type="number" value="38.6" step="0.1" data-concept="gastospersonales" data-month="3"></td>
+                                    <td class="editable negative"><input type="number" value="41.4" step="0.1" data-concept="gastospersonales" data-month="4"></td>
+                                    <td class="editable negative"><input type="number" value="41.4" step="0.1" data-concept="gastospersonales" data-month="5"></td>
+                                    <td class="editable negative"><input type="number" value="41.4" step="0.1" data-concept="gastospersonales" data-month="6"></td>
+                                    <td class="editable negative"><input type="number" value="41.4" step="0.1" data-concept="gastospersonales" data-month="7"></td>
+                                    <td class="negative total-cell" id="gastospersonales-total-s1-2025">295.2</td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td class="concept-header">Pago Deudas (8)</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="negative">36.7</td>
-                                    <td class="negative">15.0</td>
-                                    <td class="negative">66.6</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="negative">118.3</td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="pagodeudas" data-month="0"></td>
+                                    <td class="editable negative"><input type="number" value="36.7" step="0.1" data-concept="pagodeudas" data-month="1"></td>
+                                    <td class="editable negative"><input type="number" value="15" step="0.1" data-concept="pagodeudas" data-month="2"></td>
+                                    <td class="editable negative"><input type="number" value="66.6" step="0.1" data-concept="pagodeudas" data-month="3"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="pagodeudas" data-month="4"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="pagodeudas" data-month="5"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="pagodeudas" data-month="6"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="pagodeudas" data-month="7"></td>
+                                    <td class="negative total-cell" id="pagodeudas-total-s1-2025">118.3</td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td class="concept-header">Meta 600K Ahorro (9)</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="negative">10.0</td>
-                                    <td class="negative">20.0</td>
-                                    <td class="negative">30.0</td>
-                                    <td class="negative">50.0</td>
-                                    <td class="negative">30.0</td>
-                                    <td class="negative">40.0</td>
-                                    <td class="negative">420.0</td>
-                                    <td class="negative">600.0</td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="metaahorro" data-month="0"></td>
+                                    <td class="editable negative"><input type="number" value="10" step="0.1" data-concept="metaahorro" data-month="1"></td>
+                                    <td class="editable negative"><input type="number" value="20" step="0.1" data-concept="metaahorro" data-month="2"></td>
+                                    <td class="editable negative"><input type="number" value="30" step="0.1" data-concept="metaahorro" data-month="3"></td>
+                                    <td class="editable negative"><input type="number" value="50" step="0.1" data-concept="metaahorro" data-month="4"></td>
+                                    <td class="editable negative"><input type="number" value="30" step="0.1" data-concept="metaahorro" data-month="5"></td>
+                                    <td class="editable negative"><input type="number" value="40" step="0.1" data-concept="metaahorro" data-month="6"></td>
+                                    <td class="editable negative"><input type="number" value="420" step="0.1" data-concept="metaahorro" data-month="7"></td>
+                                    <td class="negative total-cell" id="metaahorro-total-s1-2025">600.0</td>
                                 </tr>
                                 <tr class="total-row">
                                     <td class="concept-header"><strong>Total Gastos</strong></td>
-                                    <td class="negative"><strong>8.8</strong></td>
-                                    <td class="negative"><strong>85.3</strong></td>
-                                    <td class="negative"><strong>78.6</strong></td>
-                                    <td class="negative"><strong>135.2</strong></td>
-                                    <td class="negative"><strong>91.4</strong></td>
-                                    <td class="negative"><strong>71.4</strong></td>
-                                    <td class="negative"><strong>81.4</strong></td>
-                                    <td class="negative"><strong>461.4</strong></td>
-                                    <td class="negative"><strong>1013.5</strong></td>
+                                    <td class="negative total-cell" id="total-expense-s1-2025-0"><strong>8.8</strong></td>
+                                    <td class="negative total-cell" id="total-expense-s1-2025-1"><strong>85.3</strong></td>
+                                    <td class="negative total-cell" id="total-expense-s1-2025-2"><strong>78.6</strong></td>
+                                    <td class="negative total-cell" id="total-expense-s1-2025-3"><strong>135.2</strong></td>
+                                    <td class="negative total-cell" id="total-expense-s1-2025-4"><strong>91.4</strong></td>
+                                    <td class="negative total-cell" id="total-expense-s1-2025-5"><strong>71.4</strong></td>
+                                    <td class="negative total-cell" id="total-expense-s1-2025-6"><strong>81.4</strong></td>
+                                    <td class="negative total-cell" id="total-expense-s1-2025-7"><strong>461.4</strong></td>
+                                    <td class="negative total-cell" id="total-expense-s1-2025-year"><strong>1013.5</strong></td>
                                 </tr>
                                 
                                 <tr class="net-flow-row">
                                     <td class="concept-header"><strong>Flujo Neto</strong></td>
-                                    <td class="positive" id="net-flow-s1-2025-may"><strong>+31.7</strong></td>
-                                    <td class="positive" id="net-flow-s1-2025-jun"><strong>+32.5</strong></td>
-                                    <td class="positive" id="net-flow-s1-2025-jul"><strong>+40.7</strong></td>
-                                    <td class="negative" id="net-flow-s1-2025-aug"><strong>-34.4</strong></td>
-                                    <td class="positive" id="net-flow-s1-2025-sep"><strong>+119.2</strong></td>
-                                    <td class="negative" id="net-flow-s1-2025-oct"><strong>-31.1</strong></td>
-                                    <td class="negative" id="net-flow-s1-2025-nov"><strong>-31.1</strong></td>
-                                    <td class="positive" id="net-flow-s1-2025-dec"><strong>+614.2</strong></td>
-                                    <td class="positive" id="net-flow-s1-2025-year"><strong>+741.4</strong></td>
+                                    <td class="total-cell" id="net-flow-s1-2025-0"><strong>+31.7</strong></td>
+                                    <td class="total-cell" id="net-flow-s1-2025-1"><strong>+32.5</strong></td>
+                                    <td class="total-cell" id="net-flow-s1-2025-2"><strong>+40.7</strong></td>
+                                    <td class="total-cell" id="net-flow-s1-2025-3"><strong>-34.4</strong></td>
+                                    <td class="total-cell" id="net-flow-s1-2025-4"><strong>+119.2</strong></td>
+                                    <td class="total-cell" id="net-flow-s1-2025-5"><strong>-31.1</strong></td>
+                                    <td class="total-cell" id="net-flow-s1-2025-6"><strong>-31.1</strong></td>
+                                    <td class="total-cell" id="net-flow-s1-2025-7"><strong>+614.2</strong></td>
+                                    <td class="total-cell" id="net-flow-s1-2025-year"><strong>+741.4</strong></td>
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="edit-indicator">💡 Fila "Consultoría" es editable - modifica los valores para ver impacto</div>
-                    </div>
-                    
-                    <!-- 2026 Monthly Breakdown -->
-                    <div class="year-section">
-                        <div class="year-title">📊 Cash Flow Mensual 2026</div>
-                        <table class="monthly-table">
-                            <thead>
-                                <tr>
-                                    <th class="concept-header">Concepto</th>
-                                    <th>Ene</th>
-                                    <th>Feb</th>
-                                    <th>Mar</th>
-                                    <th>Abr</th>
-                                    <th>May</th>
-                                    <th>Jun</th>
-                                    <th>Jul</th>
-                                    <th>Ago</th>
-                                    <th>Sep</th>
-                                    <th>Oct</th>
-                                    <th>Nov</th>
-                                    <th>Dic</th>
-                                    <th>Total Año</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="income-row">
-                                    <td class="concept-header"><strong>INGRESOS</strong></td>
-                                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                                </tr>
-                                <tr>
-                                    <td class="concept-header">Superávit 2025 (1)</td>
-                                    <td class="positive">11.7</td>
-                                    <td class="positive">11.7</td>
-                                    <td class="positive">11.7</td>
-                                    <td class="positive">11.7</td>
-                                    <td class="positive">11.7</td>
-                                    <td class="positive">11.7</td>
-                                    <td class="positive">11.7</td>
-                                    <td class="positive">11.7</td>
-                                    <td class="positive">11.7</td>
-                                    <td class="positive">11.7</td>
-                                    <td class="positive">11.7</td>
-                                    <td class="positive">11.7</td>
-                                    <td class="positive">140.4</td>
-                                </tr>
-                                <tr>
-                                    <td class="concept-header">Intereses 5.35M (2)</td>
-                                    <td class="positive">45.2</td>
-                                    <td class="positive">45.2</td>
-                                    <td class="positive">45.2</td>
-                                    <td class="positive">45.2</td>
-                                    <td class="positive">45.2</td>
-                                    <td class="positive">45.2</td>
-                                    <td class="positive">45.2</td>
-                                    <td class="positive">45.2</td>
-                                    <td class="positive">45.2</td>
-                                    <td class="positive">45.2</td>
-                                    <td class="positive">45.2</td>
-                                    <td class="positive">45.2</td>
-                                    <td class="positive">542.4</td>
-                                </tr>
-                                <tr>
-                                    <td class="concept-header">Smability (3)</td>
-                                    <td class="positive">5.0</td>
-                                    <td class="positive">5.0</td>
-                                    <td class="positive">15.0</td>
-                                    <td class="positive">20.0</td>
-                                    <td class="positive">25.0</td>
-                                    <td class="positive">25.0</td>
-                                    <td class="positive">30.0</td>
-                                    <td class="positive">35.0</td>
-                                    <td class="positive">40.0</td>
-                                    <td class="positive">42.0</td>
-                                    <td class="positive">44.0</td>
-                                    <td class="positive">45.0</td>
-                                    <td class="positive">331.0</td>
-                                </tr>
-                                <tr class="total-row">
-                                    <td class="concept-header"><strong>Total Ingresos</strong></td>
-                                    <td class="positive"><strong>61.9</strong></td>
-                                    <td class="positive"><strong>61.9</strong></td>
-                                    <td class="positive"><strong>71.9</strong></td>
-                                    <td class="positive"><strong>76.9</strong></td>
-                                    <td class="positive"><strong>81.9</strong></td>
-                                    <td class="positive"><strong>81.9</strong></td>
-                                    <td class="positive"><strong>86.9</strong></td>
-                                    <td class="positive"><strong>91.9</strong></td>
-                                    <td class="positive"><strong>96.9</strong></td>
-                                    <td class="positive"><strong>98.9</strong></td>
-                                    <td class="positive"><strong>100.9</strong></td>
-                                    <td class="positive"><strong>101.9</strong></td>
-                                    <td class="positive"><strong>1013.8</strong></td>
-                                </tr>
-                                
-                                <tr class="expense-row">
-                                    <td class="concept-header"><strong>GASTOS</strong></td>
-                                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                                </tr>
-                                <tr>
-                                    <td class="concept-header">Gastos Vida (4)</td>
-                                    <td class="negative">41.4</td>
-                                    <td class="negative">41.4</td>
-                                    <td class="negative">41.4</td>
-                                    <td class="negative">41.4</td>
-                                    <td class="negative">41.4</td>
-                                    <td class="negative">41.4</td>
-                                    <td class="negative">41.4</td>
-                                    <td class="negative">41.4</td>
-                                    <td class="negative">41.4</td>
-                                    <td class="negative">41.4</td>
-                                    <td class="negative">41.4</td>
-                                    <td class="negative">41.4</td>
-                                    <td class="negative">496.8</td>
-                                </tr>
-                                <tr class="total-row">
-                                    <td class="concept-header"><strong>Total Gastos</strong></td>
-                                    <td class="negative"><strong>41.4</strong></td>
-                                    <td class="negative"><strong>41.4</strong></td>
-                                    <td class="negative"><strong>41.4</strong></td>
-                                    <td class="negative"><strong>41.4</strong></td>
-                                    <td class="negative"><strong>41.4</strong></td>
-                                    <td class="negative"><strong>41.4</strong></td>
-                                    <td class="negative"><strong>41.4</strong></td>
-                                    <td class="negative"><strong>41.4</strong></td>
-                                    <td class="negative"><strong>41.4</strong></td>
-                                    <td class="negative"><strong>41.4</strong></td>
-                                    <td class="negative"><strong>41.4</strong></td>
-                                    <td class="negative"><strong>41.4</strong></td>
-                                    <td class="negative"><strong>496.8</strong></td>
-                                </tr>
-                                
-                                <tr class="net-flow-row">
-                                    <td class="concept-header"><strong>Flujo Neto</strong></td>
-                                    <td class="positive"><strong>+20.5</strong></td>
-                                    <td class="positive"><strong>+20.5</strong></td>
-                                    <td class="positive"><strong>+30.5</strong></td>
-                                    <td class="positive"><strong>+35.5</strong></td>
-                                    <td class="positive"><strong>+40.5</strong></td>
-                                    <td class="positive"><strong>+40.5</strong></td>
-                                    <td class="positive"><strong>+45.5</strong></td>
-                                    <td class="positive"><strong>+50.5</strong></td>
-                                    <td class="positive"><strong>+55.5</strong></td>
-                                    <td class="positive"><strong>+57.5</strong></td>
-                                    <td class="positive"><strong>+59.5</strong></td>
-                                    <td class="positive"><strong>+60.5</strong></td>
-                                    <td class="positive"><strong>+517.0</strong></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="edit-indicator">💡 Todas las celdas de datos son editables - modifica los valores para ver impacto en tiempo real</div>
                     </div>
                 </div>
                 
                 <!-- Escenario 2: Nuevo Trabajo -->
                 <div class="scenario-panel scenario-2">
+                    <button class="save-button" onclick="saveScenarioData('scenario2')" id="save-scenario2">💾 Save</button>
                     <div class="scenario-title">🔷 Escenario 2: Nuevo Trabajo</div>
                     
                     <!-- 2025 Monthly Breakdown -->
                     <div class="year-section">
                         <div class="year-title">📊 Cash Flow Mensual 2025</div>
-                        <table class="monthly-table">
+                        <table class="monthly-table" id="scenario2-2025">
                             <thead>
                                 <tr>
                                     <th class="concept-header">Concepto</th>
@@ -386,295 +239,147 @@
                                     <td class="concept-header"><strong>INGRESOS</strong></td>
                                     <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td class="concept-header">Salario (1)</td>
-                                    <td class="positive">40.3</td>
-                                    <td class="positive">80.5</td>
-                                    <td class="positive">80.5</td>
-                                    <td class="positive">80.5</td>
-                                    <td class="positive">40.3</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="positive">322.1</td>
+                                    <td class="editable positive"><input type="number" value="40.3" step="0.1" data-concept="salario2" data-month="0"></td>
+                                    <td class="editable positive"><input type="number" value="80.5" step="0.1" data-concept="salario2" data-month="1"></td>
+                                    <td class="editable positive"><input type="number" value="80.5" step="0.1" data-concept="salario2" data-month="2"></td>
+                                    <td class="editable positive"><input type="number" value="80.5" step="0.1" data-concept="salario2" data-month="3"></td>
+                                    <td class="editable positive"><input type="number" value="40.3" step="0.1" data-concept="salario2" data-month="4"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="salario2" data-month="5"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="salario2" data-month="6"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="salario2" data-month="7"></td>
+                                    <td class="positive total-cell" id="salario2-total-s2-2025">322.1</td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td class="concept-header">Nuevo Trabajo (2)</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="positive">88.6</td>
-                                    <td class="positive">88.6</td>
-                                    <td class="positive">88.6</td>
-                                    <td class="positive">265.8</td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="nuevotrabajo" data-month="0"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="nuevotrabajo" data-month="1"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="nuevotrabajo" data-month="2"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="nuevotrabajo" data-month="3"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="nuevotrabajo" data-month="4"></td>
+                                    <td class="editable positive"><input type="number" value="88.6" step="0.1" data-concept="nuevotrabajo" data-month="5"></td>
+                                    <td class="editable positive"><input type="number" value="88.6" step="0.1" data-concept="nuevotrabajo" data-month="6"></td>
+                                    <td class="editable positive"><input type="number" value="88.6" step="0.1" data-concept="nuevotrabajo" data-month="7"></td>
+                                    <td class="positive total-cell" id="nuevotrabajo-total-s2-2025">265.8</td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td class="concept-header">Cobros/Finiquito (3)</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="positive">22.0</td>
-                                    <td class="positive">13.5</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="positive">170.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="positive">205.5</td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="cobros2" data-month="0"></td>
+                                    <td class="editable positive"><input type="number" value="22" step="0.1" data-concept="cobros2" data-month="1"></td>
+                                    <td class="editable positive"><input type="number" value="13.5" step="0.1" data-concept="cobros2" data-month="2"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="cobros2" data-month="3"></td>
+                                    <td class="editable positive"><input type="number" value="170" step="0.1" data-concept="cobros2" data-month="4"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="cobros2" data-month="5"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="cobros2" data-month="6"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="cobros2" data-month="7"></td>
+                                    <td class="positive total-cell" id="cobros2-total-s2-2025">205.5</td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td class="concept-header">Rendimientos (4)</td>
-                                    <td class="positive">0.2</td>
-                                    <td class="positive">0.3</td>
-                                    <td class="positive">0.3</td>
-                                    <td class="positive">0.3</td>
-                                    <td class="positive">0.3</td>
-                                    <td class="positive">0.3</td>
-                                    <td class="positive">0.3</td>
-                                    <td class="positive">0.3</td>
-                                    <td class="positive">2.3</td>
+                                    <td class="editable positive"><input type="number" value="0.2" step="0.1" data-concept="rendimientos2" data-month="0"></td>
+                                    <td class="editable positive"><input type="number" value="0.3" step="0.1" data-concept="rendimientos2" data-month="1"></td>
+                                    <td class="editable positive"><input type="number" value="0.3" step="0.1" data-concept="rendimientos2" data-month="2"></td>
+                                    <td class="editable positive"><input type="number" value="0.3" step="0.1" data-concept="rendimientos2" data-month="3"></td>
+                                    <td class="editable positive"><input type="number" value="0.3" step="0.1" data-concept="rendimientos2" data-month="4"></td>
+                                    <td class="editable positive"><input type="number" value="0.3" step="0.1" data-concept="rendimientos2" data-month="5"></td>
+                                    <td class="editable positive"><input type="number" value="0.3" step="0.1" data-concept="rendimientos2" data-month="6"></td>
+                                    <td class="editable positive"><input type="number" value="0.3" step="0.1" data-concept="rendimientos2" data-month="7"></td>
+                                    <td class="positive total-cell" id="rendimientos2-total-s2-2025">2.3</td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td class="concept-header">Lump Sum 5M (5)</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="positive">600.0</td>
-                                    <td class="positive">600.0</td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="lumpsum2" data-month="0"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="lumpsum2" data-month="1"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="lumpsum2" data-month="2"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="lumpsum2" data-month="3"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="lumpsum2" data-month="4"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="lumpsum2" data-month="5"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="lumpsum2" data-month="6"></td>
+                                    <td class="editable positive"><input type="number" value="600" step="0.1" data-concept="lumpsum2" data-month="7"></td>
+                                    <td class="positive total-cell" id="lumpsum2-total-s2-2025">600.0</td>
                                 </tr>
                                 <tr class="total-row">
                                     <td class="concept-header"><strong>Total Ingresos</strong></td>
-                                    <td class="positive"><strong>40.5</strong></td>
-                                    <td class="positive"><strong>102.8</strong></td>
-                                    <td class="positive"><strong>94.3</strong></td>
-                                    <td class="positive"><strong>80.8</strong></td>
-                                    <td class="positive"><strong>210.6</strong></td>
-                                    <td class="positive"><strong>88.9</strong></td>
-                                    <td class="positive"><strong>88.9</strong></td>
-                                    <td class="positive"><strong>688.9</strong></td>
-                                    <td class="positive"><strong>1395.7</strong></td>
+                                    <td class="positive total-cell" id="total-income-s2-2025-0"><strong>40.5</strong></td>
+                                    <td class="positive total-cell" id="total-income-s2-2025-1"><strong>102.8</strong></td>
+                                    <td class="positive total-cell" id="total-income-s2-2025-2"><strong>94.3</strong></td>
+                                    <td class="positive total-cell" id="total-income-s2-2025-3"><strong>80.8</strong></td>
+                                    <td class="positive total-cell" id="total-income-s2-2025-4"><strong>210.6</strong></td>
+                                    <td class="positive total-cell" id="total-income-s2-2025-5"><strong>88.9</strong></td>
+                                    <td class="positive total-cell" id="total-income-s2-2025-6"><strong>88.9</strong></td>
+                                    <td class="positive total-cell" id="total-income-s2-2025-7"><strong>688.9</strong></td>
+                                    <td class="positive total-cell" id="total-income-s2-2025-year"><strong>1395.7</strong></td>
                                 </tr>
                                 
                                 <tr class="expense-row">
                                     <td class="concept-header"><strong>GASTOS</strong></td>
                                     <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td class="concept-header">Gastos Personales (6)</td>
-                                    <td class="negative">8.8</td>
-                                    <td class="negative">38.6</td>
-                                    <td class="negative">43.6</td>
-                                    <td class="negative">38.6</td>
-                                    <td class="negative">41.4</td>
-                                    <td class="negative">38.6</td>
-                                    <td class="negative">38.6</td>
-                                    <td class="negative">38.6</td>
-                                    <td class="negative">286.8</td>
+                                    <td class="editable negative"><input type="number" value="8.8" step="0.1" data-concept="gastospersonales2" data-month="0"></td>
+                                    <td class="editable negative"><input type="number" value="38.6" step="0.1" data-concept="gastospersonales2" data-month="1"></td>
+                                    <td class="editable negative"><input type="number" value="43.6" step="0.1" data-concept="gastospersonales2" data-month="2"></td>
+                                    <td class="editable negative"><input type="number" value="38.6" step="0.1" data-concept="gastospersonales2" data-month="3"></td>
+                                    <td class="editable negative"><input type="number" value="41.4" step="0.1" data-concept="gastospersonales2" data-month="4"></td>
+                                    <td class="editable negative"><input type="number" value="38.6" step="0.1" data-concept="gastospersonales2" data-month="5"></td>
+                                    <td class="editable negative"><input type="number" value="38.6" step="0.1" data-concept="gastospersonales2" data-month="6"></td>
+                                    <td class="editable negative"><input type="number" value="38.6" step="0.1" data-concept="gastospersonales2" data-month="7"></td>
+                                    <td class="negative total-cell" id="gastospersonales2-total-s2-2025">286.8</td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td class="concept-header">Pago Deudas (7)</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="negative">36.7</td>
-                                    <td class="negative">15.0</td>
-                                    <td class="negative">66.6</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="negative">118.3</td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="pagodeudas2" data-month="0"></td>
+                                    <td class="editable negative"><input type="number" value="36.7" step="0.1" data-concept="pagodeudas2" data-month="1"></td>
+                                    <td class="editable negative"><input type="number" value="15" step="0.1" data-concept="pagodeudas2" data-month="2"></td>
+                                    <td class="editable negative"><input type="number" value="66.6" step="0.1" data-concept="pagodeudas2" data-month="3"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="pagodeudas2" data-month="4"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="pagodeudas2" data-month="5"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="pagodeudas2" data-month="6"></td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="pagodeudas2" data-month="7"></td>
+                                    <td class="negative total-cell" id="pagodeudas2-total-s2-2025">118.3</td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td class="concept-header">Meta 300K Ahorro (8)</td>
-                                    <td class="neutral">0.0</td>
-                                    <td class="negative">5.0</td>
-                                    <td class="negative">10.0</td>
-                                    <td class="negative">15.0</td>
-                                    <td class="negative">25.0</td>
-                                    <td class="negative">20.0</td>
-                                    <td class="negative">25.0</td>
-                                    <td class="negative">200.0</td>
-                                    <td class="negative">300.0</td>
+                                    <td class="editable neutral"><input type="number" value="0" step="0.1" data-concept="metaahorro2" data-month="0"></td>
+                                    <td class="editable negative"><input type="number" value="5" step="0.1" data-concept="metaahorro2" data-month="1"></td>
+                                    <td class="editable negative"><input type="number" value="10" step="0.1" data-concept="metaahorro2" data-month="2"></td>
+                                    <td class="editable negative"><input type="number" value="15" step="0.1" data-concept="metaahorro2" data-month="3"></td>
+                                    <td class="editable negative"><input type="number" value="25" step="0.1" data-concept="metaahorro2" data-month="4"></td>
+                                    <td class="editable negative"><input type="number" value="20" step="0.1" data-concept="metaahorro2" data-month="5"></td>
+                                    <td class="editable negative"><input type="number" value="25" step="0.1" data-concept="metaahorro2" data-month="6"></td>
+                                    <td class="editable negative"><input type="number" value="200" step="0.1" data-concept="metaahorro2" data-month="7"></td>
+                                    <td class="negative total-cell" id="metaahorro2-total-s2-2025">300.0</td>
                                 </tr>
                                 <tr class="total-row">
                                     <td class="concept-header"><strong>Total Gastos</strong></td>
-                                    <td class="negative"><strong>8.8</strong></td>
-                                    <td class="negative"><strong>80.3</strong></td>
-                                    <td class="negative"><strong>68.6</strong></td>
-                                    <td class="negative"><strong>120.2</strong></td>
-                                    <td class="negative"><strong>66.4</strong></td>
-                                    <td class="negative"><strong>58.6</strong></td>
-                                    <td class="negative"><strong>63.6</strong></td>
-                                    <td class="negative"><strong>238.6</strong></td>
-                                    <td class="negative"><strong>705.1</strong></td>
+                                    <td class="negative total-cell" id="total-expense-s2-2025-0"><strong>8.8</strong></td>
+                                    <td class="negative total-cell" id="total-expense-s2-2025-1"><strong>80.3</strong></td>
+                                    <td class="negative total-cell" id="total-expense-s2-2025-2"><strong>68.6</strong></td>
+                                    <td class="negative total-cell" id="total-expense-s2-2025-3"><strong>120.2</strong></td>
+                                    <td class="negative total-cell" id="total-expense-s2-2025-4"><strong>66.4</strong></td>
+                                    <td class="negative total-cell" id="total-expense-s2-2025-5"><strong>58.6</strong></td>
+                                    <td class="negative total-cell" id="total-expense-s2-2025-6"><strong>63.6</strong></td>
+                                    <td class="negative total-cell" id="total-expense-s2-2025-7"><strong>238.6</strong></td>
+                                    <td class="negative total-cell" id="total-expense-s2-2025-year"><strong>705.1</strong></td>
                                 </tr>
                                 
                                 <tr class="net-flow-row">
                                     <td class="concept-header"><strong>Flujo Neto</strong></td>
-                                    <td class="positive"><strong>+31.7</strong></td>
-                                    <td class="positive"><strong>+22.5</strong></td>
-                                    <td class="positive"><strong>+25.7</strong></td>
-                                    <td class="negative"><strong>-39.4</strong></td>
-                                    <td class="positive"><strong>+144.2</strong></td>
-                                    <td class="positive"><strong>+30.3</strong></td>
-                                    <td class="positive"><strong>+25.3</strong></td>
-                                    <td class="positive"><strong>+450.3</strong></td>
-                                    <td class="positive"><strong>+690.6</strong></td>
+                                    <td class="total-cell" id="net-flow-s2-2025-0"><strong>+31.7</strong></td>
+                                    <td class="total-cell" id="net-flow-s2-2025-1"><strong>+22.5</strong></td>
+                                    <td class="total-cell" id="net-flow-s2-2025-2"><strong>+25.7</strong></td>
+                                    <td class="total-cell" id="net-flow-s2-2025-3"><strong>-39.4</strong></td>
+                                    <td class="total-cell" id="net-flow-s2-2025-4"><strong>+144.2</strong></td>
+                                    <td class="total-cell" id="net-flow-s2-2025-5"><strong>+30.3</strong></td>
+                                    <td class="total-cell" id="net-flow-s2-2025-6"><strong>+25.3</strong></td>
+                                    <td class="total-cell" id="net-flow-s2-2025-7"><strong>+450.3</strong></td>
+                                    <td class="total-cell" id="net-flow-s2-2025-year"><strong>+690.6</strong></td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                    
-                    <!-- 2026 Monthly Breakdown -->
-                    <div class="year-section">
-                        <div class="year-title">📊 Cash Flow Mensual 2026</div>
-                        <table class="monthly-table">
-                            <thead>
-                                <tr>
-                                    <th class="concept-header">Concepto</th>
-                                    <th>Ene</th>
-                                    <th>Feb</th>
-                                    <th>Mar</th>
-                                    <th>Abr</th>
-                                    <th>May</th>
-                                    <th>Jun</th>
-                                    <th>Jul</th>
-                                    <th>Ago</th>
-                                    <th>Sep</th>
-                                    <th>Oct</th>
-                                    <th>Nov</th>
-                                    <th>Dic</th>
-                                    <th>Total Año</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="income-row">
-                                    <td class="concept-header"><strong>INGRESOS</strong></td>
-                                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                                </tr>
-                                <tr>
-                                    <td class="concept-header">Nuevo Trabajo (1)</td>
-                                    <td class="positive">88.6</td>
-                                    <td class="positive">88.6</td>
-                                    <td class="positive">88.6</td>
-                                    <td class="positive">88.6</td>
-                                    <td class="positive">88.6</td>
-                                    <td class="positive">88.6</td>
-                                    <td class="positive">88.6</td>
-                                    <td class="positive">88.6</td>
-                                    <td class="positive">88.6</td>
-                                    <td class="positive">88.6</td>
-                                    <td class="positive">88.6</td>
-                                    <td class="positive">88.6</td>
-                                    <td class="positive">1063.2</td>
-                                </tr>
-                                <tr>
-                                    <td class="concept-header">Intereses Ahorro (2)</td>
-                                    <td class="positive">27.1</td>
-                                    <td class="positive">27.1</td>
-                                    <td class="positive">27.1</td>
-                                    <td class="positive">27.1</td>
-                                    <td class="positive">27.1</td>
-                                    <td class="positive">27.1</td>
-                                    <td class="positive">27.1</td>
-                                    <td class="positive">27.1</td>
-                                    <td class="positive">27.1</td>
-                                    <td class="positive">27.1</td>
-                                    <td class="positive">27.1</td>
-                                    <td class="positive">27.1</td>
-                                    <td class="positive">325.2</td>
-                                </tr>
-                                <tr>
-                                    <td class="concept-header">Smability (3)</td>
-                                    <td class="positive">5.0</td>
-                                    <td class="positive">5.0</td>
-                                    <td class="positive">8.0</td>
-                                    <td class="positive">8.0</td>
-                                    <td class="positive">8.0</td>
-                                    <td class="positive">8.0</td>
-                                    <td class="positive">8.0</td>
-                                    <td class="positive">8.0</td>
-                                    <td class="positive">8.0</td>
-                                    <td class="positive">8.0</td>
-                                    <td class="positive">8.0</td>
-                                    <td class="positive">8.0</td>
-                                    <td class="positive">90.0</td>
-                                </tr>
-                                <tr class="total-row">
-                                    <td class="concept-header"><strong>Total Ingresos</strong></td>
-                                    <td class="positive"><strong>120.7</strong></td>
-                                    <td class="positive"><strong>120.7</strong></td>
-                                    <td class="positive"><strong>123.7</strong></td>
-                                    <td class="positive"><strong>123.7</strong></td>
-                                    <td class="positive"><strong>123.7</strong></td>
-                                    <td class="positive"><strong>123.7</strong></td>
-                                    <td class="positive"><strong>123.7</strong></td>
-                                    <td class="positive"><strong>123.7</strong></td>
-                                    <td class="positive"><strong>123.7</strong></td>
-                                    <td class="positive"><strong>123.7</strong></td>
-                                    <td class="positive"><strong>123.7</strong></td>
-                                    <td class="positive"><strong>123.7</strong></td>
-                                    <td class="positive"><strong>1478.4</strong></td>
-                                </tr>
-                                
-                                <tr class="expense-row">
-                                    <td class="concept-header"><strong>GASTOS</strong></td>
-                                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                                </tr>
-                                <tr>
-                                    <td class="concept-header">Gastos Vida (4)</td>
-                                    <td class="negative">38.6</td>
-                                    <td class="negative">38.6</td>
-                                    <td class="negative">38.6</td>
-                                    <td class="negative">38.6</td>
-                                    <td class="negative">38.6</td>
-                                    <td class="negative">38.6</td>
-                                    <td class="negative">38.6</td>
-                                    <td class="negative">38.6</td>
-                                    <td class="negative">38.6</td>
-                                    <td class="negative">38.6</td>
-                                    <td class="negative">38.6</td>
-                                    <td class="negative">38.6</td>
-                                    <td class="negative">463.2</td>
-                                </tr>
-                                <tr class="total-row">
-                                    <td class="concept-header"><strong>Total Gastos</strong></td>
-                                    <td class="negative"><strong>38.6</strong></td>
-                                    <td class="negative"><strong>38.6</strong></td>
-                                    <td class="negative"><strong>38.6</strong></td>
-                                    <td class="negative"><strong>38.6</strong></td>
-                                    <td class="negative"><strong>38.6</strong></td>
-                                    <td class="negative"><strong>38.6</strong></td>
-                                    <td class="negative"><strong>38.6</strong></td>
-                                    <td class="negative"><strong>38.6</strong></td>
-                                    <td class="negative"><strong>38.6</strong></td>
-                                    <td class="negative"><strong>38.6</strong></td>
-                                    <td class="negative"><strong>38.6</strong></td>
-                                    <td class="negative"><strong>38.6</strong></td>
-                                    <td class="negative"><strong>463.2</strong></td>
-                                </tr>
-                                
-                                <tr class="net-flow-row">
-                                    <td class="concept-header"><strong>Flujo Neto</strong></td>
-                                    <td class="positive"><strong>+82.1</strong></td>
-                                    <td class="positive"><strong>+82.1</strong></td>
-                                    <td class="positive"><strong>+85.1</strong></td>
-                                    <td class="positive"><strong>+85.1</strong></td>
-                                    <td class="positive"><strong>+85.1</strong></td>
-                                    <td class="positive"><strong>+85.1</strong></td>
-                                    <td class="positive"><strong>+85.1</strong></td>
-                                    <td class="positive"><strong>+85.1</strong></td>
-                                    <td class="positive"><strong>+85.1</strong></td>
-                                    <td class="positive"><strong>+85.1</strong></td>
-                                    <td class="positive"><strong>+85.1</strong></td>
-                                    <td class="positive"><strong>+85.1</strong></td>
-                                    <td class="positive"><strong>+1015.2</strong></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="edit-indicator">💡 Todas las celdas de datos son editables - modifica los valores para ver impacto en tiempo real</div>
                     </div>
                 </div>
             </div>
@@ -691,18 +396,10 @@
                     <div class="chart-title">🌊 Waterfall Escenario 2 - 2025</div>
                     <canvas id="waterfall2-2025"></canvas>
                 </div>
-                <div class="chart-container">
-                    <div class="chart-title">🌊 Waterfall Escenario 1 - 2026</div>
-                    <canvas id="waterfall1-2026"></canvas>
-                </div>
-                <div class="chart-container">
-                    <div class="chart-title">🌊 Waterfall Escenario 2 - 2026</div>
-                    <canvas id="waterfall2-2026"></canvas>
-                </div>
             </div>
             
             <div class="chart-container">
-                <div class="chart-title">📊 Comparación Flujo Neto Mensual 2025-2026</div>
+                <div class="chart-title">📊 Comparación Flujo Neto Mensual 2025</div>
                 <canvas id="comparison-chart"></canvas>
             </div>
         </div>
@@ -715,24 +412,20 @@
                     <div class="summary-card">
                         <h4>🎯 Escenario 1: Consultoría Independiente</h4>
                         <ul>
-                            <li><strong>Capital 2025:</strong> 741.4K disponibles (600K meta + 141.4K superávit)</li>
-                            <li><strong>Ingresos 2026:</strong> 84.5K mensuales brutos (43.1K netos promedio)</li>
-                            <li><strong>Composición:</strong> 45.2K intereses + 27.6K Smability promedio + 11.7K superávit</li>
-                            <li><strong>Ventaja:</strong> Libertad total, potencial ilimitado crecimiento</li>
-                            <li><strong>Riesgo:</strong> Dependencia del éxito de Smability</li>
-                            <li><strong>Capacidad ahorro 2026:</strong> 517K anuales adicionales</li>
+                            <li><strong>Capital 2025:</strong> <span id="summary-s1-capital">741.4K</span> disponibles</li>
+                            <li><strong>Ingresos totales:</strong> <span id="summary-s1-income">1754.9K</span></li>
+                            <li><strong>Gastos totales:</strong> <span id="summary-s1-expenses">1013.5K</span></li>
+                            <li><strong>Flujo neto anual:</strong> <span id="summary-s1-net">+741.4K</span></li>
                         </ul>
                     </div>
                     
                     <div class="summary-card">
                         <h4>💼 Escenario 2: Nuevo Trabajo</h4>
                         <ul>
-                            <li><strong>Capital 2025:</strong> 690.6K disponibles (300K meta + 390.6K superávit)</li>
-                            <li><strong>Ingresos 2026:</strong> 123.2K mensuales brutos (84.6K netos)</li>
-                            <li><strong>Composición:</strong> 88.6K trabajo + 27.1K intereses + 7.5K Smability</li>
-                            <li><strong>Ventaja:</strong> Máxima seguridad, ingresos 96% superiores</li>
-                            <li><strong>Limitación:</strong> Tiempo parcial para Smability</li>
-                            <li><strong>Capacidad ahorro 2026:</strong> 1,015K anuales (84.6K mensuales)</li>
+                            <li><strong>Capital 2025:</strong> <span id="summary-s2-capital">690.6K</span> disponibles</li>
+                            <li><strong>Ingresos totales:</strong> <span id="summary-s2-income">1395.7K</span></li>
+                            <li><strong>Gastos totales:</strong> <span id="summary-s2-expenses">705.1K</span></li>
+                            <li><strong>Flujo neto anual:</strong> <span id="summary-s2-net">+690.6K</span></li>
                         </ul>
                     </div>
                 </div>
@@ -748,40 +441,22 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Ingresos Brutos 2026</strong></td>
-                            <td>84,483 MXN/mes</td>
-                            <td>123,200 MXN/mes</td>
-                            <td>+38,717 MXN/mes</td>
+                            <td><strong>Ingresos Totales 2025</strong></td>
+                            <td><span id="comp-s1-income">1,754.9K MXN</span></td>
+                            <td><span id="comp-s2-income">1,395.7K MXN</span></td>
+                            <td><span id="comp-income-diff">+359.2K MXN</span></td>
                         </tr>
                         <tr>
-                            <td><strong>Ingresos Netos 2026</strong></td>
-                            <td>43,083 MXN/mes</td>
-                            <td>84,600 MXN/mes</td>
-                            <td>+41,517 MXN/mes</td>
+                            <td><strong>Gastos Totales 2025</strong></td>
+                            <td><span id="comp-s1-expenses">1,013.5K MXN</span></td>
+                            <td><span id="comp-s2-expenses">705.1K MXN</span></td>
+                            <td><span id="comp-expenses-diff">+308.4K MXN</span></td>
                         </tr>
                         <tr>
-                            <td><strong>Capacidad Ahorro 2026</strong></td>
-                            <td>517K anuales</td>
-                            <td>1,015K anuales</td>
-                            <td>+498K anuales</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Libertad Smability</strong></td>
-                            <td>Total (tiempo completo)</td>
-                            <td>Limitada (tiempo parcial)</td>
-                            <td>Esc. 1 superior</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Riesgo Financiero</strong></td>
-                            <td>Medio-Alto</td>
-                            <td>Bajo</td>
-                            <td>Esc. 2 superior</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Ingresos Smability 2026</strong></td>
-                            <td>331K anuales</td>
-                            <td>90K anuales</td>
-                            <td>Esc. 1 superior</td>
+                            <td><strong>Flujo Neto 2025</strong></td>
+                            <td><span id="comp-s1-net">+741.4K MXN</span></td>
+                            <td><span id="comp-s2-net">+690.6K MXN</span></td>
+                            <td><span id="comp-net-diff">+50.8K MXN</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -791,87 +466,15 @@
         <!-- Recommendations Tab -->
         <div id="recommendations" class="tab-content">
             <div class="recommendations">
-                <h3>🎯 RECOMENDACIONES CLAVE</h3>
-                
-                <div class="recommendation-item">
-                    <h4>🥇 RECOMENDACIÓN PRINCIPAL: ESCENARIO 2 (Nuevo Trabajo)</h4>
-                    <p><strong>Razón:</strong> Ofrece el mejor balance riesgo/beneficio con 96% más ingresos netos y máxima seguridad financiera.</p>
-                    <ul>
-                        <li>84.6K mensuales netos garantizados vs 43.1K dependientes de Smability</li>
-                        <li>1,015K anuales de capacidad de ahorro para futuras inversiones</li>
-                        <li>Base sólida para transición "full Smability" en 2027-2028</li>
-                        <li>Desarrollo gradual de Smability sin presión financiera</li>
-                    </ul>
+                <h3>🎯 RECOMENDACIONES DINÁMICAS</h3>
+                <div id="dynamic-recommendations">
+                    <!-- Las recomendaciones se actualizarán automáticamente basadas en los datos -->
                 </div>
-                
-                <div class="recommendation-item">
-                    <h4>📈 ESTRATEGIA DE DESARROLLO SMABILITY</h4>
-                    <p><strong>Plan gradual con Escenario 2:</strong></p>
-                    <ul>
-                        <li><strong>2026:</strong> Smability tiempo parcial (7.5K/mes promedio)</li>
-                        <li><strong>2027:</strong> Intensificar a 25K/mes con base financiera sólida de 2M+</li>
-                        <li><strong>2028:</strong> Transición "full Smability" con 3M+ acumulados</li>
-                        <li><strong>Ventaja:</strong> Cero riesgo financiero durante desarrollo</li>
-                    </ul>
-                </div>
-                
-                <div class="recommendation-item">
-                    <h4>⚠️ CUÁNDO CONSIDERAR ESCENARIO 1</h4>
-                    <p><strong>Solo recomendable si:</strong></p>
-                    <ul>
-                        <li>Tienes absoluta confianza en generar 40K+ mensuales consistentes con Smability</li>
-                        <li>Valoras libertad sobre seguridad financiera</li>
-                        <li>43K mensuales netos son suficientes para tu estilo de vida</li>
-                        <li>Priorizas desarrollo acelerado de Smability sobre acumulación de capital</li>
-                    </ul>
-                </div>
-                
-                <div class="recommendation-item">
-                    <h4>💰 GESTIÓN FINANCIERA 2026</h4>
-                    <p><strong>Con Escenario 2:</strong></p>
-                    <ul>
-                        <li><strong>Ahorro automático:</strong> 70K mensuales en inversiones diversificadas</li>
-                        <li><strong>Fondo Smability:</strong> 10K mensuales para crecimiento startup</li>
-                        <li><strong>Gastos corrientes:</strong> 38.6K mensuales controlados</li>
-                        <li><strong>Meta 2028:</strong> 3M+ capital + Smability consolidada</li>
-                        <li><strong>Flexibilidad:</strong> Capacidad de tomar riesgos desde posición ultraforte</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="final-recommendation">
-                <h3 style="color: #856404; text-align: center;">💡 DECISIÓN ESTRATÉGICA FINAL</h3>
-                <div style="background: white; padding: 20px; border-radius: 10px; margin: 20px 0;">
-                    <h4 style="color: #856404;">El Escenario 2 te permite:</h4>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                        <div>
-                            <strong style="color: #28a745;">✅ Corto Plazo (2026):</strong>
-                            <ul style="color: #856404;">
-                                <li>84.6K mensuales netos garantizados</li>
-                                <li>1,015K anuales de capacidad ahorro</li>
-                                <li>Desarrollo Smability sin presión (90K anuales)</li>
-                                <li>Máxima seguridad financiera</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <strong style="color: #17a2b8;">🚀 Largo Plazo (2027-2028):</strong>
-                            <ul style="color: #856404;">
-                                <li>Base de 3M+ para "full Smability"</li>
-                                <li>Transición sin riesgo financiero</li>
-                                <li>Smability desarrollada gradualmente</li>
-                                <li>Máxima flexibilidad estratégica</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <p style="text-align: center; font-size: 1.2em; font-weight: bold; color: #856404;">
-                    <strong>La paciencia estratégica de 2 años te posiciona para el éxito máximo en Smability desde una posición de absoluta fortaleza financiera.</strong>
-                </p>
             </div>
         </div>
     </div>
 
-    <!-- Local JavaScript -->
+    <!-- JavaScript -->
     <script src="assets/js/main.js"></script>
 </body>
 </html>
