@@ -138,6 +138,7 @@ h4 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 100%;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .scenario-panel:hover {
@@ -170,6 +171,45 @@ h4 {
 
 .scenario-2 .scenario-title { 
     background: linear-gradient(135deg, #27ae60, #2ecc71); 
+}
+
+/* ===== SAVE BUTTON ===== */
+.save-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+
+.save-button:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.save-button:active {
+    transform: translateY(0);
+}
+
+.save-button.saved {
+    background: #28a745;
+    animation: saveSuccess 0.5s ease;
+}
+
+@keyframes saveSuccess {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
 /* ===== YEAR SECTIONS ===== */
@@ -265,6 +305,14 @@ h4 {
     font-weight: bold; 
 }
 
+.data-row {
+    transition: background-color 0.2s ease;
+}
+
+.data-row:hover {
+    background-color: rgba(255, 193, 7, 0.1);
+}
+
 /* ===== VALUE STYLING ===== */
 .positive { 
     color: #28a745; 
@@ -280,17 +328,31 @@ h4 {
     color: #6c757d; 
 }
 
+.total-cell {
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
 /* ===== EDITABLE FIELDS ===== */
 .editable {
     background: #fff9e6 !important;
     border: 2px solid #ffc107 !important;
     cursor: text;
     position: relative;
+    transition: all 0.2s ease;
 }
 
 .editable:hover {
     background: #fffaed !important;
-    box-shadow: 0 0 5px rgba(255, 193, 7, 0.3);
+    box-shadow: 0 0 8px rgba(255, 193, 7, 0.4);
+    border-color: #ff9800 !important;
+}
+
+.editable:focus-within {
+    background: #fff5d0 !important;
+    box-shadow: 0 0 12px rgba(255, 193, 7, 0.6);
+    border-color: #ff9800 !important;
+    transform: scale(1.02);
 }
 
 .editable input {
@@ -304,11 +366,19 @@ h4 {
     padding: 4px;
     font-size: inherit;
     font-family: inherit;
+    transition: all 0.2s ease;
 }
 
 .editable input:focus {
-    background: rgba(255, 193, 7, 0.1);
+    background: rgba(255, 193, 7, 0.15);
     border-radius: 3px;
+    color: #d35400;
+    transform: scale(1.05);
+}
+
+.editable input:invalid {
+    color: #dc3545;
+    background: rgba(220, 53, 69, 0.1);
 }
 
 .edit-indicator {
@@ -317,9 +387,16 @@ h4 {
     font-style: italic;
     margin-top: 5px;
     text-align: center;
-    padding: 5px;
+    padding: 8px;
     background: rgba(255, 193, 7, 0.1);
     border-radius: 5px;
+    border-left: 3px solid #ffc107;
+    animation: pulseIndicator 2s infinite;
+}
+
+@keyframes pulseIndicator {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
 }
 
 /* ===== CHART CONTAINERS ===== */
@@ -338,7 +415,6 @@ h4 {
     box-sizing: border-box;
 }
 
-/* Gráfica de comparación necesita más altura */
 .chart-container:last-child {
     height: 700px;
     min-height: 700px;
@@ -346,6 +422,7 @@ h4 {
 
 .chart-container:hover {
     transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 .chart-container canvas {
@@ -481,30 +558,47 @@ h4 {
     line-height: 1.4;
 }
 
-/* ===== FINAL RECOMMENDATION ===== */
-.final-recommendation {
-    background: #fff3cd;
-    border: 2px solid #ffc107;
-    border-radius: 15px;
-    padding: 25px;
-    margin: 30px 0;
-    color: #856404;
-    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.2);
+/* ===== NOTIFICATION SYSTEM ===== */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10000;
+    max-width: 300px;
+    word-wrap: break-word;
+    animation: slideIn 0.3s ease;
 }
 
-.final-recommendation h3 {
-    color: #856404;
-    text-align: center;
-    margin-bottom: 20px;
+.notification.info {
+    background: #007bff;
+    color: white;
 }
 
-.final-recommendation ul {
-    margin-left: 20px;
+.notification.success {
+    background: #28a745;
+    color: white;
 }
 
-.final-recommendation li {
-    margin-bottom: 8px;
-    line-height: 1.4;
+.notification.error {
+    background: #dc3545;
+    color: white;
+}
+
+.notification.warning {
+    background: #ffc107;
+    color: #212529;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
@@ -547,6 +641,13 @@ h4 {
         height: 500px;
         min-height: 500px;
         max-height: 500px;
+    }
+    
+    .save-button {
+        top: 15px;
+        right: 15px;
+        padding: 8px 16px;
+        font-size: 0.8em;
     }
 }
 
@@ -624,8 +725,18 @@ h4 {
         gap: 15px;
     }
     
-    .final-recommendation {
-        padding: 20px;
+    .save-button {
+        position: static;
+        margin-bottom: 15px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .notification {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
     }
 }
 
@@ -681,6 +792,15 @@ h4 {
         min-height: 400px;
         max-height: 400px;
     }
+    
+    .editable input {
+        font-size: 0.9em;
+    }
+    
+    .edit-indicator {
+        font-size: 0.6em;
+        padding: 6px;
+    }
 }
 
 /* ===== PRINT STYLES ===== */
@@ -714,11 +834,36 @@ h4 {
         page-break-inside: avoid;
         margin-bottom: 20px;
     }
+    
+    .save-button {
+        display: none;
+    }
+    
+    .notification {
+        display: none;
+    }
+    
+    .editable {
+        background: #f8f9fa !important;
+        border: 1px solid #ccc !important;
+    }
+    
+    .editable input {
+        color: #333 !important;
+    }
 }
 
 /* ===== ACCESSIBILITY ===== */
 .nav-tab:focus,
-.editable input:focus {
+.editable input:focus,
+.save-button:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+.nav-tab:focus-visible,
+.editable input:focus-visible,
+.save-button:focus-visible {
     outline: 2px solid #007bff;
     outline-offset: 2px;
 }
@@ -732,6 +877,15 @@ h4 {
 
 .loading {
     animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
 }
 
 /* ===== SCROLLBAR STYLING ===== */
@@ -752,6 +906,12 @@ h4 {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+/* Firefox scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
 }
 
 /* ===== UTILITY CLASSES ===== */
@@ -776,3 +936,88 @@ h4 {
 
 .hide { display: none; }
 .show { display: block; }
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.slide-up {
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* ===== HIGH CONTRAST MODE ===== */
+@media (prefers-contrast: high) {
+    .editable {
+        border: 3px solid #000 !important;
+        background: #fff !important;
+    }
+    
+    .editable input {
+        color: #000 !important;
+    }
+    
+    .nav-tab.active {
+        background: #000;
+        color: #fff;
+    }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+@media (prefers-color-scheme: dark) {
+    .monthly-table {
+        background: #2d3748;
+        color: #e2e8f0;
+    }
+    
+    .monthly-table th {
+        background: #1a202c;
+    }
+    
+    .scenario-panel {
+        background: #2d3748;
+        color: #e2e8f0;
+    }
+    
+    .year-section {
+        background: #4a5568;
+    }
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+.chart-container {
+    contain: layout style paint;
+}
+
+.monthly-table {
+    contain: layout style;
+}
+
+.scenario-panel {
+    contain: layout style paint;
+}
+
+/* Force hardware acceleration for smooth animations */
+.nav-tab,
+.save-button,
+.editable,
+.chart-container {
+    will-change: transform;
+    transform: translateZ(0);
+}
